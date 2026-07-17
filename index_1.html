@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAAB — Centro · Origen · Conexión</title>
+<meta name="description" content="Joyería toroidal hecha a mano. Cada pieza NAAB es un recordatorio de tu centro: geometría sagrada, cobre trenzado e intención.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --carbon:#14110c;
+    --carbon-suave:#1d1913;
+    --dorado:#c4a055;
+    --dorado-profundo:#8f7434;
+    --marfil:#f6f0e3;
+    --arena:#eae0cc;
+    --tinta:#2b2620;
+    --tinta-suave:#5c5344;
+    --terracota:#a9603f;
+    --serif:'Fraunces',serif;
+    --sans:'Jost',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:300;color:var(--tinta);background:var(--marfil);line-height:1.7;font-size:17px}
+
+  .contenedor{max-width:1080px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--dorado-profundo);font-weight:400}
+  .oscuro .eyebrow{color:var(--dorado)}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15}
+
+  /* ------- Hero ------- */
+  .hero{background:var(--carbon);color:var(--marfil);min-height:100vh;display:flex;flex-direction:column}
+  .hero-nav{display:flex;justify-content:space-between;align-items:center;padding:28px 0}
+  .wordmark{font-family:var(--serif);font-weight:400;font-size:22px;letter-spacing:.42em;color:var(--dorado);text-decoration:none}
+  .hero-nav a.enlace{color:var(--marfil);text-decoration:none;font-size:14px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;transition:opacity .3s}
+  .hero-nav a.enlace:hover,.hero-nav a.enlace:focus-visible{opacity:1}
+  .hero-cuerpo{flex:1;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:32px 0 72px}
+  .hero-titulo{font-size:clamp(42px,6vw,76px);letter-spacing:.01em;margin:20px 0 24px}
+  .hero-titulo em{font-style:italic;color:var(--dorado)}
+  .hero-texto{max-width:44ch;color:rgba(246,240,227,.78);font-size:18px}
+  .hero-tagline{margin-top:14px;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:rgba(246,240,227,.55)}
+  .hero-tagline b{font-weight:400;color:var(--dorado)}
+  .boton{display:inline-block;margin-top:40px;padding:16px 38px;border:1px solid var(--dorado);color:var(--dorado);text-decoration:none;font-size:14px;letter-spacing:.22em;text-transform:uppercase;transition:background .35s,color .35s}
+  .boton:hover,.boton:focus-visible{background:var(--dorado);color:var(--carbon)}
+  .boton-solido{background:var(--dorado);color:var(--carbon)}
+  .boton-solido:hover,.boton-solido:focus-visible{background:var(--marfil);border-color:var(--marfil)}
+  .hero-imagen{position:relative}
+  .hero-imagen img{width:100%;max-width:480px;display:block;margin-left:auto;border-radius:2px}
+  .hero-imagen figcaption{margin-top:14px;text-align:right;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,240,227,.45)}
+
+  /* ------- Divisor torus ------- */
+  .divisor{display:flex;align-items:center;gap:20px;justify-content:center;padding:8px 0}
+  .divisor::before,.divisor::after{content:"";height:1px;width:min(180px,26vw);background:currentColor;opacity:.35}
+  .divisor svg{width:34px;height:34px}
+
+  /* ------- Secciones ------- */
+  section{padding:104px 0}
+  .seccion-titulo{font-size:clamp(30px,4vw,44px);margin:18px 0 26px}
+  .oscuro{background:var(--carbon);color:var(--marfil)}
+  .fondo-arena{background:var(--arena)}
+
+  /* Simbolismo */
+  .simbolismo-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .simbolismo p+p{margin-top:18px}
+  .ecuacion{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--dorado-profundo)}
+  .ecuacion .signo{font-family:var(--serif);font-size:26px;color:var(--tinta-suave)}
+  .ecuacion figcaption{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--tinta-suave)}
+
+  /* La pieza */
+  .pieza-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+  .pieza-grid img{width:100%;border-radius:2px;display:block}
+  .lista-materiales{list-style:none;margin-top:28px;border-top:1px solid rgba(43,38,32,.18)}
+  .lista-materiales li{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid rgba(43,38,32,.18);align-items:baseline}
+  .lista-materiales strong{font-weight:500;font-family:var(--serif);font-size:19px;min-width:150px}
+  .lista-materiales span{color:var(--tinta-suave);font-size:16px}
+
+  /* Experiencia */
+  .experiencia-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .paso{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid rgba(246,240,227,.14)}
+  .paso:last-child{border-bottom:none}
+  .paso-num{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--dorado);min-width:34px}
+  .paso p{color:rgba(246,240,227,.75);font-size:16px}
+  .paso h3{font-size:19px;margin-bottom:4px;font-weight:500}
+  .experiencia-grid img{width:100%;border-radius:2px;display:block}
+
+  /* Diferenciadores */
+  .tres{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px}
+  .tres article h3{font-size:21px;margin:16px 0 10px}
+  .tres article p{color:var(--tinta-suave);font-size:16px}
+  .tres svg{width:38px;height:38px;color:var(--dorado-profundo)}
+
+  /* Galería */
+  .galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  .galeria figure{aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:var(--arena)}
+  .galeria img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+  .galeria figure:hover img{transform:scale(1.04)}
+  .galeria .pendiente{display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--tinta-suave)}
+
+  /* CTA */
+  .cta{text-align:center}
+  .cta .seccion-titulo{max-width:22ch;margin-left:auto;margin-right:auto}
+  .cta p.intro{max-width:52ch;margin:0 auto;color:rgba(246,240,227,.75)}
+  .formulario{display:flex;gap:12px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+  .formulario input{font-family:var(--sans);font-size:16px;padding:15px 20px;width:min(360px,100%);background:transparent;border:1px solid rgba(246,240,227,.35);color:var(--marfil);letter-spacing:.02em}
+  .formulario input::placeholder{color:rgba(246,240,227,.4)}
+  .formulario input:focus-visible{outline:1px solid var(--dorado);border-color:var(--dorado)}
+  .formulario button{font-family:var(--sans);cursor:pointer;background:var(--dorado);border:1px solid var(--dorado);color:var(--carbon);padding:15px 34px;font-size:14px;letter-spacing:.22em;text-transform:uppercase;transition:background .35s}
+  .formulario button:hover,.formulario button:focus-visible{background:var(--marfil);border-color:var(--marfil)}
+  .cta .confirmacion{display:none;margin-top:32px;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--dorado)}
+  .cta .nota{margin-top:26px;font-size:13px;color:rgba(246,240,227,.45)}
+  .cta .nota a{color:rgba(246,240,227,.6)}
+
+  /* Footer */
+  footer{background:var(--carbon);color:rgba(246,240,227,.55);padding:44px 0;border-top:1px solid rgba(246,240,227,.1)}
+  .footer-fila{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px;letter-spacing:.06em}
+  .footer-fila a{color:rgba(246,240,227,.7);text-decoration:none}
+  .footer-fila a:hover{color:var(--dorado)}
+
+  /* Animación de entrada */
+  .revelar{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+  .revelar.visible{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .revelar{opacity:1;transform:none;transition:none}
+    .galeria figure:hover img{transform:none}
+  }
+
+  @media (max-width:840px){
+    section{padding:72px 0}
+    .hero-cuerpo{grid-template-columns:1fr;padding-bottom:56px}
+    .hero-imagen img{margin:0 auto}
+    .hero-imagen figcaption{text-align:center}
+    .simbolismo-grid,.pieza-grid,.experiencia-grid{grid-template-columns:1fr;gap:40px}
+    .tres{grid-template-columns:1fr;gap:32px}
+    .galeria{grid-template-columns:repeat(2,1fr)}
+    .pieza-grid img{order:-1}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ 1 · HERO ============ -->
+<header class="hero oscuro">
+  <div class="contenedor">
+    <nav class="hero-nav">
+      <a class="wordmark" href="#">NAAB</a>
+      <a class="enlace" href="#lista">Lista de espera</a>
+    </nav>
+  </div>
+  <div class="contenedor hero-cuerpo">
+    <div>
+      <p class="eyebrow">Joyería toroidal · hecha a mano</p>
+      <h1 class="hero-titulo">Un recordatorio<br>de tu <em>centro</em></h1>
+      <p class="hero-texto">NAAB significa centro y origen en lengua maya. Cada pieza nace del torus —la forma en la que fluye la energía del universo— trenzada a mano en cobre y vidrio, para acompañarte de regreso a tu esencia.</p>
+      <p class="hero-tagline"><b>Centro</b> · <b>Origen</b> · <b>Conexión</b></p>
+      <a class="boton" href="#simbolismo">Descubre la pieza</a>
+    </div>
+    <figure class="hero-imagen">
+      <img src="assets/dije-hero.jpg" alt="Dije toroidal NAAB en tonos dorados con trenzado veneciano de cobre y detalle de turquesa, sobre fondo negro" style="max-width:380px">
+      <figcaption>Dije toroide · pieza de debut</figcaption>
+    </figure>
+  </div>
+</header>
+
+<!-- ============ 2 · SIMBOLISMO ============ -->
+<section id="simbolismo">
+  <div class="contenedor simbolismo-grid">
+    <div class="revelar">
+      <p class="eyebrow">El símbolo</p>
+      <h2 class="seccion-titulo">La geometría que sostiene todo lo que vive</h2>
+      <p>El torus es la forma más estable del universo: la encuentras en el campo magnético de la Tierra, en el latido del corazón, en la semilla que germina. Energía que sale, gira y regresa a su origen. Un ciclo que nunca se rompe.</p>
+      <p>La flor de loto completa la ecuación: nace del lodo, atraviesa el agua y florece hacia la luz. Transformación con raíz. NAAB une ambas formas en una sola pieza — el flujo y el florecimiento, el centro y el camino de vuelta a él.</p>
+    </div>
+    <figure class="ecuacion revelar" aria-label="El símbolo de NAAB une la flor de loto y el torus">
+      <svg viewBox="-60 -55 120 110" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <path d="M0 42 C -16 18, -12 -22, 0 -44 C 12 -22, 16 18, 0 42 Z"/>
+        <path d="M0 42 C -30 26, -44 -6, -38 -30 C -18 -22, -4 4, 0 42 Z"/>
+        <path d="M0 42 C 30 26, 44 -6, 38 -30 C 18 -22, 4 4, 0 42 Z"/>
+        <path d="M0 42 C -44 38, -58 14, -56 -2 C -36 0, -14 16, 0 42 Z"/>
+        <path d="M0 42 C 44 38, 58 14, 56 -2 C 36 0, 14 16, 0 42 Z"/>
+      </svg>
+      <span class="signo">+</span>
+      <svg id="torus-simbolo" viewBox="-70 -70 140 140" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"></svg>
+      <figcaption>Loto · Torus · Naab</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 3 · LA PIEZA ============ -->
+<section class="fondo-arena" id="pieza">
+  <div class="contenedor pieza-grid">
+    <div class="revelar">
+      <p class="eyebrow">La pieza</p>
+      <h2 class="seccion-titulo">Trenzada a mano, una revolución a la vez</h2>
+      <p>Cada dije se construye con un solo hilo continuo de cobre que recorre el cuerpo del torus en espiral. Al completar cada vuelta, el hilo cruza y cambia de dirección sin cortarse —el trenzado veneciano— formando una red de rombos que abraza el vidrio y el cuarzo en su interior.</p>
+      <ul class="lista-materiales">
+        <li><strong>Cobre</strong><span>conductor natural, trenzado en patrón veneciano continuo</span></li>
+        <li><strong>Vidrio y resina</strong><span>cuerpo toroidal translúcido que juega con la luz</span></li>
+        <li><strong>Cuarzo</strong><span>embebido en el centro de la pieza como semilla de intención</span></li>
+      </ul>
+    </div>
+    <img class="revelar" src="assets/empaque.jpg" alt="Caja NAAB abierta con bolsa de lino, certificado de autenticidad y detalle dorado">
+  </div>
+</section>
+
+<!-- ============ 4 · LA EXPERIENCIA ============ -->
+<section class="oscuro" id="experiencia">
+  <div class="contenedor experiencia-grid">
+    <div class="revelar">
+      <p class="eyebrow">La experiencia</p>
+      <h2 class="seccion-titulo">Tu pieza sabe quién eres</h2>
+      <div class="paso">
+        <span class="paso-num">i</span>
+        <div>
+          <h3>Escanea</h3>
+          <p>Cada NAAB incluye un código único. Al escanearlo, tu pieza deja de ser un objeto y se convierte en una llave.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <span class="paso-num">ii</span>
+        <div>
+          <h3>Regístrala</h3>
+          <p>Con tu nombre y fecha de nacimiento, tu pieza genera un perfil que solo te pertenece a ti.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <span class="paso-num">iii</span>
+        <div>
+          <h3>Descubre</h3>
+          <p>Tu signo y su elemento, tu piedra de nacimiento, tu número de vida. Una lectura personal que acompaña a la pieza para siempre.</p>
+        </div>
+      </div>
+    </div>
+    <img class="revelar" src="assets/caja.jpg" alt="Caja negra NAAB con el símbolo de loto y torus grabado en dorado">
+  </div>
+</section>
+
+<!-- ============ 5 · POR QUÉ ES DISTINTA ============ -->
+<section id="distinta">
+  <div class="contenedor">
+    <div class="revelar" style="text-align:center">
+      <p class="eyebrow">Por qué es distinta</p>
+      <h2 class="seccion-titulo">Tres razones para llevarla</h2>
+    </div>
+    <div class="tres">
+      <article class="revelar">
+        <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="19" cy="19" r="13"/><circle cx="19" cy="19" r="5"/></svg>
+        <h3>Pieza única</h3>
+        <p>Ningún trenzado se repite. El cobre, el vidrio y el cuarzo hacen que cada dije sea irrepetible, como quien lo lleva.</p>
+      </article>
+      <article class="revelar">
+        <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M19 32 C 10 26, 5 18, 8 10 C 14 12, 18 18, 19 32 Z"/><path d="M19 32 C 28 26, 33 18, 30 10 C 24 12, 20 18, 19 32 Z"/></svg>
+        <h3>Significado con raíz</h3>
+        <p>Geometría sagrada y lengua maya: una pieza que no decora, recuerda. Centro, origen y conexión en tu pecho.</p>
+      </article>
+      <article class="revelar">
+        <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="8" y="8" width="22" height="22" rx="2"/><path d="M13 13h4v4h-4zM21 13h4M21 17h4M13 21h4M13 25h4M21 21h4v4h-4z"/></svg>
+        <h3>Experiencia viva</h3>
+        <p>La única joyería artesanal con un alma digital: tu pieza guarda una lectura personal que crece contigo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 · GALERÍA ============ -->
+<section class="fondo-arena" id="galeria">
+  <div class="contenedor">
+    <div class="revelar" style="text-align:center">
+      <p class="eyebrow">Galería</p>
+      <h2 class="seccion-titulo">La luz atraviesa cada pieza</h2>
+    </div>
+    <div class="galeria">
+      <figure class="revelar"><img src="assets/dije-hero.jpg" alt="Dije toroidal NAAB dorado colgado, vista frontal"></figure>
+      <figure class="revelar"><img src="assets/empaque.jpg" alt="Presentación de la pieza NAAB en su caja con bolsa de lino"></figure>
+      <figure class="revelar pendiente">Próxima sesión</figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 · CTA ============ -->
+<section class="oscuro cta" id="lista">
+  <div class="contenedor">
+    <div class="revelar">
+      <div class="divisor" style="color:var(--dorado)">
+        <svg id="torus-divisor" viewBox="-70 -70 140 140" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"></svg>
+      </div>
+      <h2 class="seccion-titulo">Sé de los primeros en volver al centro</h2>
+      <p class="intro">La primera colección de NAAB será limitada. Déjanos tu correo y te avisaremos antes que a nadie cuando las piezas estén listas.</p>
+      <form class="formulario" id="forma-lista" action="#" method="post">
+        <label for="correo" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Tu correo electrónico</label>
+        <input type="email" id="correo" name="correo" placeholder="tu@correo.com" required autocomplete="email">
+        <button type="submit">Quiero saber más</button>
+      </form>
+      <p class="confirmacion" id="confirmacion">Gracias. Te escribiremos cuando la primera pieza esté lista.</p>
+      <p class="nota">Solo usaremos tu correo para avisarte del lanzamiento. <a href="#">Aviso de privacidad</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 · FOOTER ============ -->
+<footer>
+  <div class="contenedor footer-fila">
+    <span class="wordmark" style="font-size:17px">NAAB</span>
+    <span>Centro · Origen · Conexión</span>
+    <span><a href="#">Instagram</a> &nbsp;·&nbsp; <a href="#">Aviso de privacidad</a></span>
+  </div>
+</footer>
+
+<script>
+  /* Torus lineal: elipses rotadas alrededor del centro (firma visual de la marca) */
+  function dibujarTorus(id, n, rx, ry){
+    var svg = document.getElementById(id);
+    if(!svg) return;
+    var ns = 'http://www.w3.org/2000/svg';
+    for(var i = 0; i < n; i++){
+      var e = document.createElementNS(ns, 'ellipse');
+      e.setAttribute('cx', 0); e.setAttribute('cy', 0);
+      e.setAttribute('rx', rx); e.setAttribute('ry', ry);
+      e.setAttribute('transform', 'rotate(' + (i * 180 / n) + ')');
+      svg.appendChild(e);
+    }
+    var c = document.createElementNS(ns, 'circle');
+    c.setAttribute('cx', 0); c.setAttribute('cy', 0); c.setAttribute('r', ry * 0.9);
+    svg.appendChild(c);
+  }
+  dibujarTorus('torus-simbolo', 12, 58, 21);
+  dibujarTorus('torus-divisor', 9, 56, 20);
+
+  /* Aparición suave al hacer scroll, respetando reduced motion */
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('visible'); obs.unobserve(en.target); }
+      });
+    }, {threshold: 0.15});
+    document.querySelectorAll('.revelar').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.revelar').forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  /* Lista de espera: por ahora confirma localmente.
+     Para capturar correos de verdad: crear un formulario en formspree.io (gratis)
+     y cambiar action="#" por action="https://formspree.io/f/TU_ID" method="POST",
+     eliminando el preventDefault de abajo. */
+  document.getElementById('forma-lista').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('confirmacion').style.display = 'block';
+  });
+</script>
+</body>
+</html>
