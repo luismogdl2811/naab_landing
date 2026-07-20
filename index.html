@@ -612,9 +612,9 @@ document.getElementById('confirmacion').style.display = 'block';
     submitBtn.textContent = 'Generando…';
 
     // Guarda el registro en Formspree para el seguimiento comercial.
-    // Reemplaza FORMSPREE_ENDPOINT_AQUI por tu endpoint real (crea un formulario
+    // Reemplaza https://formspree.io/f/xnjevkze por tu endpoint real (crea un formulario
     // nuevo en formspree.io llamado "Registro de dije", separado del de la lista de espera).
-    fetch('FORMSPREE_ENDPOINT_AQUI', {
+    fetch('https://formspree.io/f/xnjevkze', {
       method: 'POST',
       headers: {'Accept': 'application/json'},
       body: new FormData(forma)
