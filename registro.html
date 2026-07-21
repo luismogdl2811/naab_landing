@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 :root{
 --carbon:#14110c;
@@ -284,34 +284,220 @@ svg.appendChild(c);
 
     var btnPdf = document.getElementById('btn-pdf');
     btnPdf.addEventListener('click', function(){
-      var elemento = document.getElementById('carta-imprimible');
       var nombreArchivo = 'Carta-NAAB-' + carta.nombreDisplay.trim().replace(/\s+/g,'-') + '.pdf';
-
       btnPdf.disabled = true;
       var textoOriginal = btnPdf.textContent;
       btnPdf.textContent = 'Generando PDF…';
-
-      var opciones = {
-        margin: 0,
-        filename: nombreArchivo,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, backgroundColor: '#f6f0e3' },
-        jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['css', 'legacy'] }
-      };
-
-      html2pdf().set(opciones).from(elemento).save().then(function(){
+      generarPdfCarta(carta, signoNombre, fechaFmt, nombreArchivo).then(function(){
         btnPdf.disabled = false;
         btnPdf.textContent = textoOriginal;
       }).catch(function(err){
         console.error('Error generando el PDF', err);
+        alert('No se pudo generar el PDF. Intenta de nuevo.');
         btnPdf.disabled = false;
         btnPdf.textContent = textoOriginal;
-        alert('No se pudo generar el PDF. Intenta de nuevo.');
       });
     });
 
     holder.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  /* ============ Generador de PDF — formato Carta de Nacimiento NAAB ============
+     Dibujado directamente con jsPDF (texto vectorial, sin capturas).
+     Tipografía Cormorant Garamond incrustada; paleta: marfil/carbón/dorado/terracota. */
+
+  var _fuentesPdf = null;
+  function cargarFuentesPdf(){
+    if(_fuentesPdf) return Promise.resolve(_fuentesPdf);
+    function fetchB64(url){
+      return fetch(url).then(function(r){
+        if(!r.ok) throw new Error('font http '+r.status);
+        return r.arrayBuffer();
+      }).then(function(buf){
+        var bytes = new Uint8Array(buf), bin = '';
+        var chunk = 0x8000;
+        for(var i=0;i<bytes.length;i+=chunk){
+          bin += String.fromCharCode.apply(null, bytes.subarray(i, i+chunk));
+        }
+        return btoa(bin);
+      });
+    }
+    return Promise.all([
+      fetchB64('https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/cormorantgaramond/CormorantGaramond%5Bwght%5D.ttf'),
+      fetchB64('https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/cormorantgaramond/CormorantGaramond-Italic%5Bwght%5D.ttf')
+    ]).then(function(res){
+      _fuentesPdf = {normal: res[0], italic: res[1]};
+      return _fuentesPdf;
+    }).catch(function(err){
+      console.warn('No se pudieron cargar las fuentes Cormorant; se usará Times.', err);
+      _fuentesPdf = null;
+      return null;
+    });
+  }
+
+  var NOMBRE_NUMERO = {1:'Uno',2:'Dos',3:'Tres',4:'Cuatro',5:'Cinco',6:'Seis',7:'Siete',8:'Ocho',9:'Nueve',11:'Once',22:'Veintidós',33:'Treinta y tres'};
+
+  function generarPdfCarta(carta, signoNombre, fechaFmt, nombreArchivo){
+    return cargarFuentesPdf().then(function(fuentes){
+      var jsPDF = window.jspdf.jsPDF;
+      var doc = new jsPDF({unit:'pt', format:'a4', orientation:'portrait'});
+
+      var SERIF = 'times';
+      if(fuentes){
+        doc.addFileToVFS('Cormorant.ttf', fuentes.normal);
+        doc.addFont('Cormorant.ttf', 'Cormorant', 'normal');
+        doc.addFileToVFS('CormorantItalic.ttf', fuentes.italic);
+        doc.addFont('CormorantItalic.ttf', 'Cormorant', 'italic');
+        SERIF = 'Cormorant';
+      }
+
+      var W = doc.internal.pageSize.getWidth();
+      var H = doc.internal.pageSize.getHeight();
+      var margen = 70;
+      var anchoTexto = W - margen*2;
+
+      var MARFIL=[246,240,227], CARBON=[20,17,12], DORADO=[196,160,85], DORADO_PROF=[143,116,52], TERRACOTA=[169,96,63], TINTA=[43,38,32], TINTA_SUAVE=[92,83,68];
+
+      function fondo(){ doc.setFillColor(MARFIL[0],MARFIL[1],MARFIL[2]); doc.rect(0,0,W,H,'F'); }
+      function pieNaab(yPos){
+        doc.setFont(SERIF,'normal'); doc.setFontSize(11);
+        doc.setTextColor(TINTA_SUAVE[0],TINTA_SUAVE[1],TINTA_SUAVE[2]);
+        doc.text('N A A B', W/2, yPos, {align:'center'});
+      }
+
+      // Datos derivados de los bloques
+      var numeroTitulo = NOMBRE_NUMERO[carta.numero] + ' — ' + carta.bloques[0].titulo;
+      var elementoNombre = carta.bloques[2].titulo;
+      var arquetipoNombre = carta.bloques[3].titulo;
+      var cuarzoNombre = carta.bloques[4].titulo;
+      var resumen = signoNombre + ' · ' + elementoNombre + ' · ' + arquetipoNombre + ' · Número ' + carta.numero + ' · ' + cuarzoNombre;
+
+      var MAPA_EYEBROW = {
+        'Número':'TU NÚMERO',
+        'Signo solar':'TU SIGNO SOLAR',
+        'Elemento':'TU ELEMENTO',
+        'Arquetipo':'TU ARQUETIPO',
+        'Tu cuarzo':'TU CUARZO',
+        'Cuarzo de correspondencia':'TU CUARZO',
+        'Cuarzo elegido':'TU CUARZO ELEGIDO'
+      };
+
+      /* ---------- PORTADA ---------- */
+      fondo();
+      doc.setFont(SERIF,'normal'); doc.setFontSize(30);
+      doc.setTextColor(CARBON[0],CARBON[1],CARBON[2]);
+      doc.text('N A A B', W/2, 200, {align:'center'});
+
+      doc.setFont(SERIF,'italic'); doc.setFontSize(14);
+      doc.setTextColor(TINTA_SUAVE[0],TINTA_SUAVE[1],TINTA_SUAVE[2]);
+      doc.text('el centro del que todo emana', W/2, 226, {align:'center'});
+
+      doc.setFont(SERIF,'normal'); doc.setFontSize(12);
+      doc.setTextColor(DORADO_PROF[0],DORADO_PROF[1],DORADO_PROF[2]);
+      doc.text('C A R T A   D E   N A C I M I E N T O', W/2, 320, {align:'center'});
+
+      doc.setFont(SERIF,'normal'); doc.setFontSize(28);
+      doc.setTextColor(TINTA[0],TINTA[1],TINTA[2]);
+      var lineasNombre = doc.splitTextToSize(carta.nombreDisplay, anchoTexto);
+      doc.text(lineasNombre, W/2, 372, {align:'center', lineHeightFactor:1.2});
+      var yPortada = 372 + (lineasNombre.length-1)*34;
+
+      doc.setFont(SERIF,'normal'); doc.setFontSize(14);
+      doc.setTextColor(TINTA_SUAVE[0],TINTA_SUAVE[1],TINTA_SUAVE[2]);
+      doc.text(fechaFmt, W/2, yPortada + 32, {align:'center'});
+
+      doc.setFont(SERIF,'normal'); doc.setFontSize(13);
+      doc.setTextColor(DORADO_PROF[0],DORADO_PROF[1],DORADO_PROF[2]);
+      var lineasResumen = doc.splitTextToSize(resumen, anchoTexto);
+      doc.text(lineasResumen, W/2, yPortada + 66, {align:'center', lineHeightFactor:1.4});
+
+      doc.setFont(SERIF,'italic'); doc.setFontSize(12);
+      doc.setTextColor(TINTA_SUAVE[0],TINTA_SUAVE[1],TINTA_SUAVE[2]);
+      doc.text('Una lectura simbólica de numerología, astrología y arquetipos', W/2, H-120, {align:'center'});
+
+      pieNaab(H-64);
+
+      /* ---------- SECCIONES ---------- */
+      doc.addPage(); fondo();
+      var y = margen + 20;
+      var tamCuerpo = 12;
+      var interlineado = 1.6;
+      var altoLinea = tamCuerpo * interlineado;
+
+      carta.bloques.forEach(function(b, idx){
+        var eyebrow = MAPA_EYEBROW[b.eyebrow] || b.eyebrow.toUpperCase();
+        var titulo = (idx === 0) ? numeroTitulo : b.titulo;
+
+        doc.setFont(SERIF,'normal'); doc.setFontSize(tamCuerpo);
+        var lineas = doc.splitTextToSize(b.texto, anchoTexto);
+        var altoBloque = 20 + 30 + lineas.length*altoLinea + 40;
+
+        if(y + altoBloque > H - margen - 20){
+          pieNaab(H-64);
+          doc.addPage(); fondo();
+          y = margen + 20;
+        }
+
+        var colE = b.eleccion ? TERRACOTA : DORADO_PROF;
+        doc.setFont(SERIF,'normal'); doc.setFontSize(10);
+        doc.setTextColor(colE[0],colE[1],colE[2]);
+        doc.text(eyebrow.split('').join(' '), margen, y);
+        y += 24;
+
+        doc.setFont(SERIF,'normal'); doc.setFontSize(21);
+        doc.setTextColor(TINTA[0],TINTA[1],TINTA[2]);
+        doc.text(titulo, margen, y);
+        y += 26;
+
+        doc.setFont(SERIF,'normal'); doc.setFontSize(tamCuerpo);
+        doc.setTextColor(TINTA[0],TINTA[1],TINTA[2]);
+        doc.text(lineas, margen, y, {lineHeightFactor:interlineado});
+        y += lineas.length*altoLinea + 36;
+      });
+
+      /* ---------- CITA DE CIERRE + COLOFÓN ---------- */
+      var textoCorrespondencia = carta.bloques[4].texto;
+      var cita = null;
+      var marca = 'recordatorio de tu naturaleza: ';
+      var pos = textoCorrespondencia.lastIndexOf(marca);
+      if(pos !== -1){
+        cita = textoCorrespondencia.slice(pos + marca.length).trim();
+        if(cita.length){ cita = cita.charAt(0).toUpperCase() + cita.slice(1); }
+        if(cita.slice(-1) === '.'){ cita = cita.slice(0,-1); }
+        cita = '\u00AB' + cita + '.\u00BB';
+      }
+
+      var altoCierre = (cita ? 90 : 0) + 120;
+      if(y + altoCierre > H - margen){
+        pieNaab(H-64);
+        doc.addPage(); fondo();
+        y = margen + 60;
+      } else {
+        y += 30;
+      }
+
+      if(cita){
+        doc.setFont(SERIF,'italic'); doc.setFontSize(15);
+        doc.setTextColor(TINTA[0],TINTA[1],TINTA[2]);
+        var lineasCita = doc.splitTextToSize(cita, anchoTexto - 60);
+        doc.text(lineasCita, W/2, y, {align:'center', lineHeightFactor:1.5});
+        y += lineasCita.length*22 + 46;
+      }
+
+      doc.setFont(SERIF,'normal'); doc.setFontSize(15);
+      doc.setTextColor(CARBON[0],CARBON[1],CARBON[2]);
+      doc.text('N A A B', W/2, y, {align:'center'});
+      y += 20;
+      doc.setFont(SERIF,'italic'); doc.setFontSize(11);
+      doc.setTextColor(TINTA_SUAVE[0],TINTA_SUAVE[1],TINTA_SUAVE[2]);
+      doc.text('el centro del que todo emana', W/2, y, {align:'center'});
+
+      doc.setFont(SERIF,'italic'); doc.setFontSize(9);
+      doc.setTextColor(TINTA_SUAVE[0],TINTA_SUAVE[1],TINTA_SUAVE[2]);
+      doc.text('Esta carta pertenece a las tradiciones simbólicas de la numerología, la astrología y los arquetipos.', W/2, H-50, {align:'center'});
+
+      doc.save(nombreArchivo);
+    });
   }
 
   var esenciaSel = 'femenina';
