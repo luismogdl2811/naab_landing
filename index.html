@@ -294,7 +294,7 @@ section{padding:72px 0}
 </div>
 <h2 class="seccion-titulo">Sé de los primeros en volver al centro</h2>
 <p class="intro">La primera colección de NAAB será limitada. Déjanos tu correo y te avisaremos antes que a nadie cuando las piezas estén listas.</p>
-<form class="formulario" id="forma-lista" action="#" method="post">
+<form class="formulario" id="forma-lista" action="https://formspree.io/f/mbdnyvqb" method="POST">
 <label for="correo" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Tu correo electrónico</label>
 <input type="email" id="correo" name="correo" placeholder="tu@correo.com" required autocomplete="email">
 <button type="submit">Quiero saber más</button>
@@ -346,14 +346,29 @@ document.querySelectorAll('.revelar').forEach(function(el){ obs.observe(el); });
 document.querySelectorAll('.revelar').forEach(function(el){ el.classList.add('visible'); });
 }
 
-/* Lista de espera: por ahora confirma localmente.
-Para capturar correos de verdad: crear un formulario en formspree.io (gratis)
-y cambiar action="#" por action="https://formspree.io/f/TU_ID" method="POST",
-eliminando el preventDefault de abajo. */
+/* Lista de espera: envío real a Formspree vía AJAX, sin salir de la página. */
 document.getElementById('forma-lista').addEventListener('submit', function(ev){
 ev.preventDefault();
-this.style.display = 'none';
+var forma = this;
+var datos = new FormData(forma);
+fetch(forma.action, {
+method: 'POST',
+body: datos,
+headers: {'Accept': 'application/json'}
+}).then(function(resp){
+if(resp.ok){
+forma.style.display = 'none';
 document.getElementById('confirmacion').style.display = 'block';
+} else {
+resp.json().then(function(data){
+console.error('Formspree error', data);
+});
+alert('No se pudo enviar tu correo. Por favor intenta de nuevo en unos minutos.');
+}
+}).catch(function(err){
+console.error('Error de red al enviar a Formspree', err);
+alert('No se pudo enviar tu correo. Revisa tu conexión e intenta de nuevo.');
+});
 });
 </script>
 

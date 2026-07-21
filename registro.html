@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 :root{
 --carbon:#14110c;
@@ -59,12 +60,12 @@ section{padding:104px 0}
 .registro-msg.ok{border-color:var(--dorado-profundo);color:var(--tinta)}
 
 .carta{margin-top:48px;border:1px solid rgba(43,38,32,.16);background:var(--marfil)}
-.carta-hero{background:var(--carbon);color:var(--marfil);padding:48px 40px 38px;text-align:center}
+.carta-hero{background:var(--carbon);color:var(--marfil);padding:48px 40px 38px;text-align:center;break-inside:avoid;page-break-inside:avoid}
 .carta-hero svg{width:52px;margin:0 auto 18px;display:block;color:var(--dorado)}
 .carta-hero .carta-nombre{font-family:var(--serif);font-size:28px;margin-bottom:8px}
 .carta-hero .carta-meta{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,240,227,.6)}
 .carta-cuerpo{padding:8px 40px 8px}
-.carta-bloque{padding:28px 0;border-bottom:1px solid rgba(43,38,32,.14)}
+.carta-bloque{padding:28px 0;border-bottom:1px solid rgba(43,38,32,.14);break-inside:avoid;page-break-inside:avoid}
 .carta-bloque:last-child{border-bottom:none}
 .carta-bloque .eyebrow{margin-bottom:6px}
 .carta-bloque.eleccion .eyebrow{color:var(--terracota)}
@@ -74,18 +75,12 @@ section{padding:104px 0}
 .accion-btn{padding:13px 22px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--tinta);border:1px solid rgba(43,38,32,.2);cursor:pointer;background:transparent;font-family:var(--sans)}
 .accion-btn.primaria{background:var(--carbon);color:var(--marfil);border-color:var(--carbon)}
 .accion-btn:hover{opacity:.8}
+.accion-btn:disabled{opacity:.5;cursor:not-allowed}
 
 footer{background:var(--carbon);color:rgba(246,240,227,.55);padding:44px 0;border-top:1px solid rgba(246,240,227,.1)}
 .footer-fila{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px;letter-spacing:.06em}
 .footer-fila a{color:rgba(246,240,227,.7);text-decoration:none}
 .footer-fila a:hover{color:var(--dorado)}
-
-@media print{
-body *{visibility:hidden}
-.carta,.carta *{visibility:visible}
-.carta{position:absolute;top:0;left:0;width:100%;border:none}
-.carta-acciones{display:none}
-}
 </style>
 </head>
 <body>
@@ -282,17 +277,39 @@ svg.appendChild(c);
         '<div class="carta-cuerpo">' + bloquesHtml + '</div>' +
         '<div class="carta-acciones">' +
           '<button type="button" class="accion-btn primaria" id="btn-pdf">Descargar como PDF</button>' +
-          '<a class="accion-btn" id="btn-whatsapp" target="_blank" rel="noopener">Enviar por WhatsApp</a>' +
-          '<a class="accion-btn" id="btn-correo">Enviar por correo</a>' +
         '</div>' +
       '</div>';
 
     dibujarTorus('torus-carta', 12, 58, 21);
-    document.getElementById('btn-pdf').addEventListener('click', function(){ window.print(); });
 
-    var texto = cartaTextoPlano(carta);
-    document.getElementById('btn-whatsapp').href = 'https://wa.me/?text=' + encodeURIComponent(texto);
-    document.getElementById('btn-correo').href = 'mailto:?subject=' + encodeURIComponent('Tu carta NAAB') + '&body=' + encodeURIComponent(texto);
+    var btnPdf = document.getElementById('btn-pdf');
+    btnPdf.addEventListener('click', function(){
+      var elemento = document.getElementById('carta-imprimible');
+      var nombreArchivo = 'Carta-NAAB-' + carta.nombreDisplay.trim().replace(/\s+/g,'-') + '.pdf';
+
+      btnPdf.disabled = true;
+      var textoOriginal = btnPdf.textContent;
+      btnPdf.textContent = 'Generando PDF…';
+
+      var opciones = {
+        margin: 0,
+        filename: nombreArchivo,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, backgroundColor: '#f6f0e3' },
+        jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'legacy'] }
+      };
+
+      html2pdf().set(opciones).from(elemento).save().then(function(){
+        btnPdf.disabled = false;
+        btnPdf.textContent = textoOriginal;
+      }).catch(function(err){
+        console.error('Error generando el PDF', err);
+        btnPdf.disabled = false;
+        btnPdf.textContent = textoOriginal;
+        alert('No se pudo generar el PDF. Intenta de nuevo.');
+      });
+    });
 
     holder.scrollIntoView({behavior:'smooth', block:'start'});
   }
