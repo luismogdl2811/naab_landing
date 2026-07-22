@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NAAB — Centro · Origen · Conexión</title>
-<meta name="description" content="Joyería toroidal hecha a mano. Cada pieza NAAB es un recordatorio de tu centro: geometría sagrada, cobre chapado en oro trenzado a mano y cuarzo natural en resina.">
+<meta name="description" content="Arte toroidal hecho a mano. Cada pieza NAAB es un recordatorio de tu centro: geometría sagrada, cobre chapado en oro trenzado a mano y cuarzo natural en resina.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -47,6 +47,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15}
 .boton:hover,.boton:focus-visible{background:var(--dorado);color:var(--carbon)}
 .boton-solido{background:var(--dorado);color:var(--carbon)}
 .boton-solido:hover,.boton-solido:focus-visible{background:var(--marfil);border-color:var(--marfil)}
+.boton-sutil{border-color:var(--dorado-profundo);color:var(--dorado-profundo)}
+.boton-sutil:hover,.boton-sutil:focus-visible{background:var(--dorado-profundo);color:var(--marfil)}
 .hero-imagen{position:relative}
 .hero-imagen img{width:100%;max-width:480px;display:block;margin-left:auto;border-radius:2px}
 .hero-imagen figcaption{margin-top:14px;text-align:right;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,240,227,.45)}
@@ -99,6 +101,39 @@ section{padding:104px 0}
 .galeria figure:hover img{transform:scale(1.04)}
 .galeria .pendiente{display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--tinta-suave)}
 
+/* Ritual (cómo se usa) */
+.ritual-lista{margin-top:32px}
+.ritual-item{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(43,38,32,.14)}
+.ritual-item:last-child{border-bottom:none}
+.ritual-num{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--dorado-profundo);min-width:34px}
+.ritual-item h3{font-size:19px;margin-bottom:4px;font-weight:500}
+.ritual-item p{color:var(--tinta-suave);font-size:16px}
+.ritual-torus{display:flex;align-items:center;justify-content:center}
+.ritual-torus svg{width:min(280px,70%);height:auto;color:var(--dorado-profundo)}
+
+/* Beneficios: variante oscura de la grid .tres */
+.tres-oscuro article p{color:rgba(246,240,227,.75)}
+.tres-oscuro svg{color:var(--dorado)}
+
+/* Regalos digitales */
+.regalos-cta{text-align:center;margin-top:48px}
+
+/* Beneficios grid (4 columnas) */
+.beneficios-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;margin-top:48px}
+.beneficios-grid article{text-align:center;padding:28px 16px}
+.beneficios-grid svg{width:42px;height:42px;color:var(--dorado);margin-bottom:14px}
+.beneficios-grid h3{font-size:19px;margin-bottom:8px}
+.beneficios-grid p{color:rgba(246,240,227,.72);font-size:15px;line-height:1.65}
+
+/* FAQ */
+.faq{margin-top:48px;max-width:740px;margin-left:auto;margin-right:auto}
+.faq details{border-bottom:1px solid rgba(43,38,32,.16);padding:0}
+.faq summary{cursor:pointer;padding:22px 0;font-family:var(--serif);font-size:19px;font-weight:400;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-family:var(--sans);font-size:22px;color:var(--dorado-profundo);transition:transform .3s;flex-shrink:0}
+.faq details[open] summary::after{content:'−'}
+.faq .faq-body{padding:0 0 22px;color:var(--tinta-suave);font-size:16px;line-height:1.7;max-width:62ch}
+
 /* CTA */
 .cta{text-align:center}
 .cta .seccion-titulo{max-width:22ch;margin-left:auto;margin-right:auto}
@@ -135,8 +170,14 @@ section{padding:72px 0}
 .hero-imagen figcaption{text-align:center}
 .simbolismo-grid,.pieza-grid,.experiencia-grid{grid-template-columns:1fr;gap:40px}
 .tres{grid-template-columns:1fr;gap:32px}
+.beneficios-grid{grid-template-columns:repeat(2,1fr);gap:24px}
 .galeria{grid-template-columns:repeat(2,1fr)}
 .pieza-grid img{order:-1}
+.ritual-torus{display:none}
+.hero-nav .nav-links{display:none}
+}
+@media (max-width:480px){
+.beneficios-grid{grid-template-columns:1fr}
 }
 
 </style>
@@ -148,12 +189,18 @@ section{padding:72px 0}
 <div class="contenedor">
 <nav class="hero-nav">
 <a class="wordmark" href="#">NAAB</a>
+<div class="nav-links" style="display:flex;gap:28px">
+<a class="enlace" href="#pieza">La pieza</a>
+<a class="enlace" href="#beneficios">Beneficios</a>
+<a class="enlace" href="#regalos">Regalos</a>
+<a class="enlace" href="#faq">FAQ</a>
 <a class="enlace" href="#lista">Lista de espera</a>
+</div>
 </nav>
 </div>
 <div class="contenedor hero-cuerpo">
 <div>
-<p class="eyebrow">Joyería toroidal · hecha a mano</p>
+<p class="eyebrow">Arte toroidal · hecho a mano</p>
 <h1 class="hero-titulo">Un recordatorio<br>de tu <em>centro</em></h1>
 <p class="hero-texto">NAAB significa centro y origen en lengua maya. Cada pieza nace del torus —la forma en la que fluye la energía del universo— trenzada a mano en cobre chapado en oro de 14k, con un cuarzo natural incrustado en resina, para acompañarte de regreso a tu esencia.</p>
 <p class="hero-tagline"><b>Centro</b> · <b>Origen</b> · <b>Conexión</b></p>
@@ -210,6 +257,42 @@ section{padding:72px 0}
 </div>
 </section>
 
+<!-- ============ 3B · CÓMO SE USA ============ -->
+<section id="ritual">
+<div class="contenedor experiencia-grid">
+<div class="revelar">
+<p class="eyebrow">El ritual</p>
+<h2 class="seccion-titulo">Cómo llevar tu centro</h2>
+<div class="ritual-lista">
+<div class="ritual-item">
+<span class="ritual-num">i</span>
+<div>
+<h3>Actívala</h3>
+<p>Al recibirla, sostenla entre tus manos unos segundos y fija una intención: calma, claridad, enfoque. Es el gesto que convierte la pieza en un objeto tuyo, no solo hecho para ti.</p>
+</div>
+</div>
+<div class="ritual-item">
+<span class="ritual-num">ii</span>
+<div>
+<h3>Llévala contigo</h3>
+<p>No hay una forma correcta de usarla — cerca del corazón, en la muñeca o donde la sientas presente. Vuelve a ella cuando la mente se disperse: es tu recordatorio físico de regresar al centro.</p>
+</div>
+</div>
+<div class="ritual-item">
+<span class="ritual-num">iii</span>
+<div>
+<h3>Cuídala</h3>
+<p>Límpiala con un paño seco y guárdala en su bolsa de lino. Evita el contacto prolongado con perfumes, cremas y agua clorada para que el cobre chapado en oro conserve su brillo.</p>
+</div>
+</div>
+</div>
+</div>
+<figure class="revelar ritual-torus" aria-hidden="true">
+<svg id="torus-ritual" viewBox="-70 -70 140 140" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"></svg>
+</figure>
+</div>
+</section>
+
 <!-- ============ 4 · LA EXPERIENCIA ============ -->
 <section class="oscuro" id="experiencia">
 <div class="contenedor experiencia-grid">
@@ -243,6 +326,37 @@ section{padding:72px 0}
 </section>
 
 
+<!-- ============ 4B · REGALOS DIGITALES ============ -->
+<section class="fondo-arena" id="regalos">
+<div class="contenedor">
+<div class="revelar" style="text-align:center">
+<p class="eyebrow">Un regalo más</p>
+<h2 class="seccion-titulo">Lo que desbloqueas al registrarla</h2>
+<p style="max-width:52ch;margin:0 auto;color:var(--tinta-suave)">Además de tu carta de nacimiento, tu registro te da acceso a una pequeña biblioteca pensada para tu elemento — sin costo, para siempre.</p>
+</div>
+<div class="tres">
+<article class="revelar">
+<svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 20v-3a11 11 0 0 1 22 0v3"/><rect x="5" y="20" width="7" height="10" rx="2"/><rect x="26" y="20" width="7" height="10" rx="2"/></svg>
+<h3>Meditación guiada</h3>
+<p>Un audio breve, alineado a tu elemento — agua, tierra, aire o fuego — para volver al centro cuando lo necesites.</p>
+</article>
+<article class="revelar">
+<svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 24V14M15 27V11M19 30V8M23 27V11M30 24V14"/></svg>
+<h3>Frecuencias Solfeggio</h3>
+<p>Una selección curada por elemento, para acompañar tu práctica, tu descanso o el momento en que la lleves puesta.</p>
+</article>
+<article class="revelar">
+<svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M11 5h11l6 6v22a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M22 5v6h6"/><path d="M13 21h12M13 25h12M13 17h6"/></svg>
+<h3>Guía de activación y cuidado</h3>
+<p>Un PDF descargable con el ritual completo — cómo activarla, llevarla y conservarla — para tenerlo siempre a la mano.</p>
+</article>
+</div>
+<div class="regalos-cta revelar">
+<a class="boton boton-sutil" href="registro.html">Registra tu dije y desbloquéalos</a>
+</div>
+</div>
+</section>
+
 <!-- ============ 5 · POR QUÉ ES DISTINTA ============ -->
 <section id="distinta">
 <div class="contenedor">
@@ -264,7 +378,7 @@ section{padding:72px 0}
 <article class="revelar">
 <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="8" y="8" width="22" height="22" rx="2"/><path d="M13 13h4v4h-4zM21 13h4M21 17h4M13 21h4M13 25h4M21 21h4v4h-4z"/></svg>
 <h3>Experiencia viva</h3>
-<p>La única joyería artesanal con un alma digital: tu pieza guarda una lectura personal que crece contigo.</p>
+<p>La única artesanía toroidal con un alma digital: tu pieza guarda una lectura personal que crece contigo.</p>
 </article>
 </div>
 </div>
@@ -285,7 +399,98 @@ section{padding:72px 0}
 </div>
 </section>
 
-<!-- ============ 7 · CTA ============ -->
+<!-- ============ 7 · BENEFICIOS ============ -->
+<section class="oscuro" id="beneficios">
+<div class="contenedor">
+<div class="revelar" style="text-align:center">
+<p class="eyebrow">Lo que acompaña</p>
+<h2 class="seccion-titulo">No promete, recuerda</h2>
+<p style="max-width:54ch;margin:0 auto;color:rgba(246,240,227,.7)">NAAB no es un amuleto ni un dispositivo médico. Es un objeto con intención: una forma geométrica que te invita a volver al centro cada vez que la tocas o la ves.</p>
+</div>
+<div class="beneficios-grid">
+<article class="revelar">
+<svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="21" cy="21" r="16"/><path d="M21 12v9l6 4"/></svg>
+<h3>Pausa consciente</h3>
+<p>El gesto de tocar la pieza interrumpe el piloto automático. Un micro-ritual para volver al momento presente.</p>
+</article>
+<article class="revelar">
+<svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="21" cy="21" r="16"/><path d="M14 21h14M21 14v14"/></svg>
+<h3>Enfoque e intención</h3>
+<p>La intención que fijaste al activarla permanece como ancla. Cada vez que la sientes en el pecho, te acuerdas de tu propósito.</p>
+</article>
+<article class="revelar">
+<svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M21 5a16 16 0 1 0 0 32 16 16 0 0 0 0-32Z"/><path d="M21 5c-4 5-6 10-6 16s2 11 6 16"/><path d="M21 5c4 5 6 10 6 16s-2 11-6 16"/><path d="M5 21h32"/></svg>
+<h3>Conexión simbólica</h3>
+<p>El torus conecta lo micro con lo macro. Llevarlo es recordar que eres parte de algo más grande, no separado de ello.</p>
+</article>
+<article class="revelar">
+<svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M21 5v6M21 31v6M5 21h6M31 21h6"/><circle cx="21" cy="21" r="8"/><circle cx="21" cy="21" r="16"/></svg>
+<h3>Identidad personal</h3>
+<p>Tu carta de nacimiento, tu elemento, tu número de vida — la capa digital convierte la pieza en un espejo simbólico de quien eres.</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- ============ 8 · FAQ ============ -->
+<section id="faq">
+<div class="contenedor">
+<div class="revelar" style="text-align:center">
+<p class="eyebrow">Preguntas frecuentes</p>
+<h2 class="seccion-titulo">Todo lo que necesitas saber</h2>
+</div>
+<div class="faq revelar">
+
+<details>
+<summary>¿Qué es exactamente una pieza NAAB?</summary>
+<div class="faq-body">Es un dije toroidal hecho a mano: un cuerpo de resina con forma de torus (dona geométrica) con un cuarzo natural incrustado en su centro, envuelto en un trenzado veneciano continuo de cobre chapado en oro de 14k. Cada pieza es única porque el patrón del trenzado nunca se repite igual.</div>
+</details>
+
+<details>
+<summary>¿NAAB es joyería?</summary>
+<div class="faq-body">Preferimos llamarlo arte toroidal. La pieza nace de la geometría sagrada y la artesanía — no de una colección de moda ni de una línea de accesorios. Su valor está en lo que simboliza y en cómo se construye, no solo en cómo se ve.</div>
+</details>
+
+<details>
+<summary>¿Qué significa "NAAB"?</summary>
+<div class="faq-body">En lengua maya, NAAB significa "centro y origen". Elegimos ese nombre porque condensa lo que la pieza representa: un recordatorio de tu centro — el punto desde el cual todo fluye y al cual todo regresa.</div>
+</details>
+
+<details>
+<summary>¿Qué es el torus y por qué esa forma?</summary>
+<div class="faq-body">El torus es una forma geométrica con forma de dona que aparece en la naturaleza a muchas escalas: el campo magnético de la Tierra, la estructura de una manzana, la dinámica de un vórtice de agua. Representa el flujo continuo de energía que sale, gira y regresa a su origen. Es la forma que mejor traduce la idea de "centro" en un objeto que puedes llevar contigo.</div>
+</details>
+
+<details>
+<summary>¿Qué cuarzo trae la pieza?</summary>
+<div class="faq-body">Cada pieza lleva un cuarzo natural incrustado en su interior. La variedad puede cambiar entre piezas (cuarzo claro, ojo de tigre, amatista, rosa), lo que hace a cada dije único. En la capa digital, tu registro genera además una piedra de nacimiento simbólica basada en tu fecha — una lectura distinta al cuarzo físico.</div>
+</details>
+
+<details>
+<summary>¿Cómo funciona el código QR?</summary>
+<div class="faq-body">Cada pieza incluye un código QR único. Al escanearlo con tu teléfono, accedes a una página donde ingresas tu nombre y fecha de nacimiento. Con esos datos se genera tu perfil personal: tu signo solar, tu elemento, tu piedra de nacimiento, tu número de vida y tu color elemental. Toda la información se procesa en tu dispositivo — no almacenamos datos personales.</div>
+</details>
+
+<details>
+<summary>¿Cuánto tarda en hacerse una pieza?</summary>
+<div class="faq-body">El trenzado veneciano del cobre toma aproximadamente una hora de trabajo activo. La pieza completa, incluyendo el curado de la resina y el ensamblaje, requiere alrededor de dos horas por unidad. Todo es artesanal; no usamos moldes industriales ni producción en serie.</div>
+</details>
+
+<details>
+<summary>¿Cómo cuido mi pieza?</summary>
+<div class="faq-body">Límpiala con un paño seco y suave. Guárdala en la bolsa de lino que viene con ella cuando no la uses. Evita el contacto prolongado con perfumes, cremas, cloro y agua salada para conservar el brillo del cobre chapado en oro.</div>
+</details>
+
+<details>
+<summary>¿Hacen envíos?</summary>
+<div class="faq-body">Sí. La primera colección será limitada y los envíos se harán dentro de México. Los detalles de envío y costos se compartirán con la lista de espera antes del lanzamiento.</div>
+</details>
+
+</div>
+</div>
+</section>
+
+<!-- ============ 9 · CTA ============ -->
 <section class="oscuro cta" id="lista">
 <div class="contenedor">
 <div class="revelar">
@@ -333,6 +538,7 @@ svg.appendChild(c);
 }
 dibujarTorus('torus-simbolo', 12, 58, 21);
 dibujarTorus('torus-divisor', 9, 56, 20);
+dibujarTorus('torus-ritual', 14, 58, 21);
 
 /* Aparición suave al hacer scroll, respetando reduced motion */
 if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
