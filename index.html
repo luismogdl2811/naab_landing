@@ -3,580 +3,930 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NAAB — Centro · Origen · Conexión</title>
-<meta name="description" content="Arte toroidal hecho a mano. Cada pieza NAAB es un recordatorio de tu centro: geometría sagrada, cobre chapado en oro trenzado a mano y cuarzo natural en resina.">
+<title>NAAB — Centro · Origen · Conexión | Arte Toroidal</title>
+<meta name="description" content="NAAB es arte toroidal artesanal. Un dije de geometría sagrada hecho a mano en cobre, resina y cuarzo, con una experiencia digital personalizada vía QR.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
---carbon:#14110c;
---carbon-suave:#1d1913;
---dorado:#c4a055;
---dorado-profundo:#8f7434;
---marfil:#f6f0e3;
---arena:#eae0cc;
---tinta:#2b2620;
---tinta-suave:#5c5344;
---terracota:#a9603f;
---serif:'Fraunces',serif;
---sans:'Jost',sans-serif;
+:root {
+    --sand: #EFE6D8;
+    --terra: #B5674C;
+    --gold: #A8894E;
+    --sage: #8A9B84;
+    --ink: #3E362E;
+    --ink-light: #4A4139;
+    --cream: #F5F0E8;
+    --white: #FFFFFF;
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);font-weight:300;color:var(--tinta);background:var(--marfil);line-height:1.7;font-size:17px}
-
-.contenedor{max-width:1080px;margin:0 auto;padding:0 24px}
-.eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--dorado-profundo);font-weight:400}
-.oscuro .eyebrow{color:var(--dorado)}
-h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15}
-
-/* ------- Hero ------- */
-.hero{background:var(--carbon);color:var(--marfil);min-height:100vh;display:flex;flex-direction:column}
-.hero-nav{display:flex;justify-content:space-between;align-items:center;padding:28px 0}
-.wordmark{font-family:var(--serif);font-weight:400;font-size:22px;letter-spacing:.42em;color:var(--dorado);text-decoration:none}
-.hero-nav a.enlace{color:var(--marfil);text-decoration:none;font-size:14px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;transition:opacity .3s}
-.hero-nav a.enlace:hover,.hero-nav a.enlace:focus-visible{opacity:1}
-.hero-cuerpo{flex:1;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:32px 0 72px}
-.hero-titulo{font-size:clamp(42px,6vw,76px);letter-spacing:.01em;margin:20px 0 24px}
-.hero-titulo em{font-style:italic;color:var(--dorado)}
-.hero-texto{max-width:44ch;color:rgba(246,240,227,.78);font-size:18px}
-.hero-tagline{margin-top:14px;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:rgba(246,240,227,.55)}
-.hero-tagline b{font-weight:400;color:var(--dorado)}
-.boton{display:inline-block;margin-top:40px;padding:16px 38px;border:1px solid var(--dorado);color:var(--dorado);text-decoration:none;font-size:14px;letter-spacing:.22em;text-transform:uppercase;transition:background .35s,color .35s}
-.boton:hover,.boton:focus-visible{background:var(--dorado);color:var(--carbon)}
-.boton-solido{background:var(--dorado);color:var(--carbon)}
-.boton-solido:hover,.boton-solido:focus-visible{background:var(--marfil);border-color:var(--marfil)}
-.boton-sutil{border-color:var(--dorado-profundo);color:var(--dorado-profundo)}
-.boton-sutil:hover,.boton-sutil:focus-visible{background:var(--dorado-profundo);color:var(--marfil)}
-.hero-imagen{position:relative}
-.hero-imagen img{width:100%;max-width:480px;display:block;margin-left:auto;border-radius:2px}
-.hero-imagen figcaption{margin-top:14px;text-align:right;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,240,227,.45)}
-
-/* ------- Divisor torus ------- */
-.divisor{display:flex;align-items:center;gap:20px;justify-content:center;padding:8px 0}
-.divisor::before,.divisor::after{content:"";height:1px;width:min(180px,26vw);background:currentColor;opacity:.35}
-.divisor svg{width:34px;height:34px}
-
-/* ------- Secciones ------- */
-section{padding:104px 0}
-.seccion-titulo{font-size:clamp(30px,4vw,44px);margin:18px 0 26px}
-.oscuro{background:var(--carbon);color:var(--marfil)}
-.fondo-arena{background:var(--arena)}
-
-/* Simbolismo */
-.simbolismo-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.simbolismo p+p{margin-top:18px}
-.ecuacion{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--dorado-profundo)}
-.ecuacion .signo{font-family:var(--serif);font-size:26px;color:var(--tinta-suave)}
-.ecuacion figcaption{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--tinta-suave)}
-
-/* La pieza */
-.pieza-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
-.pieza-grid img{width:100%;border-radius:2px;display:block}
-.lista-materiales{list-style:none;margin-top:28px;border-top:1px solid rgba(43,38,32,.18)}
-.lista-materiales li{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid rgba(43,38,32,.18);align-items:baseline}
-.lista-materiales strong{font-weight:500;font-family:var(--serif);font-size:19px;min-width:150px}
-.lista-materiales span{color:var(--tinta-suave);font-size:16px}
-
-/* Experiencia */
-.experiencia-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.paso{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid rgba(246,240,227,.14)}
-.paso:last-child{border-bottom:none}
-.paso-num{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--dorado);min-width:34px}
-.paso p{color:rgba(246,240,227,.75);font-size:16px}
-.paso h3{font-size:19px;margin-bottom:4px;font-weight:500}
-.experiencia-grid img{width:100%;border-radius:2px;display:block}
-
-/* Diferenciadores */
-.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px}
-.tres article h3{font-size:21px;margin:16px 0 10px}
-.tres article p{color:var(--tinta-suave);font-size:16px}
-.tres svg{width:38px;height:38px;color:var(--dorado-profundo)}
-
-/* Galería */
-.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
-.galeria figure{aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:var(--arena)}
-.galeria img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
-.galeria figure:hover img{transform:scale(1.04)}
-.galeria .pendiente{display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--tinta-suave)}
-
-/* Ritual (cómo se usa) */
-.ritual-lista{margin-top:32px}
-.ritual-item{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(43,38,32,.14)}
-.ritual-item:last-child{border-bottom:none}
-.ritual-num{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--dorado-profundo);min-width:34px}
-.ritual-item h3{font-size:19px;margin-bottom:4px;font-weight:500}
-.ritual-item p{color:var(--tinta-suave);font-size:16px}
-.ritual-torus{display:flex;align-items:center;justify-content:center}
-.ritual-torus svg{width:min(280px,70%);height:auto;color:var(--dorado-profundo)}
-
-/* Beneficios: variante oscura de la grid .tres */
-.tres-oscuro article p{color:rgba(246,240,227,.75)}
-.tres-oscuro svg{color:var(--dorado)}
-
-/* Regalos digitales */
-.regalos-cta{text-align:center;margin-top:48px}
-
-/* Beneficios grid (4 columnas) */
-.beneficios-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;margin-top:48px}
-.beneficios-grid article{text-align:center;padding:28px 16px}
-.beneficios-grid svg{width:42px;height:42px;color:var(--dorado);margin-bottom:14px}
-.beneficios-grid h3{font-size:19px;margin-bottom:8px}
-.beneficios-grid p{color:rgba(246,240,227,.72);font-size:15px;line-height:1.65}
-
-/* FAQ */
-.faq{margin-top:48px;max-width:740px;margin-left:auto;margin-right:auto}
-.faq details{border-bottom:1px solid rgba(43,38,32,.16);padding:0}
-.faq summary{cursor:pointer;padding:22px 0;font-family:var(--serif);font-size:19px;font-weight:400;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:'+';font-family:var(--sans);font-size:22px;color:var(--dorado-profundo);transition:transform .3s;flex-shrink:0}
-.faq details[open] summary::after{content:'−'}
-.faq .faq-body{padding:0 0 22px;color:var(--tinta-suave);font-size:16px;line-height:1.7;max-width:62ch}
-
-/* CTA */
-.cta{text-align:center}
-.cta .seccion-titulo{max-width:22ch;margin-left:auto;margin-right:auto}
-.cta p.intro{max-width:52ch;margin:0 auto;color:rgba(246,240,227,.75)}
-.formulario{display:flex;gap:12px;justify-content:center;margin-top:44px;flex-wrap:wrap}
-.formulario input{font-family:var(--sans);font-size:16px;padding:15px 20px;width:min(360px,100%);background:transparent;border:1px solid rgba(246,240,227,.35);color:var(--marfil);letter-spacing:.02em}
-.formulario input::placeholder{color:rgba(246,240,227,.4)}
-.formulario input:focus-visible{outline:1px solid var(--dorado);border-color:var(--dorado)}
-.formulario button{font-family:var(--sans);cursor:pointer;background:var(--dorado);border:1px solid var(--dorado);color:var(--carbon);padding:15px 34px;font-size:14px;letter-spacing:.22em;text-transform:uppercase;transition:background .35s}
-.formulario button:hover,.formulario button:focus-visible{background:var(--marfil);border-color:var(--marfil)}
-.cta .confirmacion{display:none;margin-top:32px;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--dorado)}
-.cta .nota{margin-top:26px;font-size:13px;color:rgba(246,240,227,.45)}
-.cta .nota a{color:rgba(246,240,227,.6)}
-
-/* Footer */
-footer{background:var(--carbon);color:rgba(246,240,227,.55);padding:44px 0;border-top:1px solid rgba(246,240,227,.1)}
-.footer-fila{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px;letter-spacing:.06em}
-.footer-fila a{color:rgba(246,240,227,.7);text-decoration:none}
-.footer-fila a:hover{color:var(--dorado)}
-
-/* Animación de entrada */
-.revelar{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
-.revelar.visible{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){
-html{scroll-behavior:auto}
-.revelar{opacity:1;transform:none;transition:none}
-.galeria figure:hover img{transform:none}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+    font-family: 'Jost', sans-serif;
+    color: var(--ink);
+    background: var(--sand);
+    line-height: 1.7;
+    font-weight: 400;
+    overflow-x: hidden;
 }
-
-@media (max-width:840px){
-section{padding:72px 0}
-.hero-cuerpo{grid-template-columns:1fr;padding-bottom:56px}
-.hero-imagen img{margin:0 auto}
-.hero-imagen figcaption{text-align:center}
-.simbolismo-grid,.pieza-grid,.experiencia-grid{grid-template-columns:1fr;gap:40px}
-.tres{grid-template-columns:1fr;gap:32px}
-.beneficios-grid{grid-template-columns:repeat(2,1fr);gap:24px}
-.galeria{grid-template-columns:repeat(2,1fr)}
-.pieza-grid img{order:-1}
-.ritual-torus{display:none}
-.hero-nav .nav-links{display:none}
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s var(--transition-smooth), transform 0.9s var(--transition-smooth);
 }
-@media (max-width:480px){
-.beneficios-grid{grid-template-columns:1fr}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+.reveal-delay-4 { transition-delay: 0.6s; }
+nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 1.2rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: all 0.4s var(--transition-smooth);
 }
-
+nav.scrolled {
+    background: rgba(62, 54, 46, 0.95); backdrop-filter: blur(20px);
+    padding: 0.8rem 3rem; box-shadow: 0 2px 30px rgba(0,0,0,0.15);
+}
+.nav-logo {
+    font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 500;
+    color: var(--gold); letter-spacing: 4px; text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+    color: var(--sand); text-decoration: none; font-size: 0.85rem;
+    font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+    position: relative; padding-bottom: 4px; transition: color 0.3s;
+}
+.nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
+    background: var(--gold); transition: width 0.4s var(--transition-smooth);
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover { color: var(--gold); }
+.nav-toggle {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; background: none; border: none; padding: 5px;
+}
+.nav-toggle span { display: block; width: 24px; height: 2px; background: var(--sand); transition: all 0.3s; }
+.hero {
+    min-height: 100vh; background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; padding: 6rem 2rem 4rem;
+}
+.hero-bg-torus {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); width: 600px; height: 600px;
+    opacity: 0.06; pointer-events: none;
+}
+.hero-content {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    max-width: 1300px; width: 100%; align-items: center;
+    position: relative; z-index: 2;
+}
+.hero-text { text-align: left; }
+.hero-tagline {
+    font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300; color: var(--sand); line-height: 1.15;
+    margin-bottom: 1.5rem; letter-spacing: -1px;
+}
+.hero-tagline em { font-style: italic; color: var(--gold); }
+.hero-subtitle {
+    font-size: 1.1rem; color: rgba(239, 230, 216, 0.7);
+    font-weight: 300; margin-bottom: 2.5rem; max-width: 420px; line-height: 1.8;
+}
+.hero-cta {
+    display: inline-block; padding: 1rem 2.5rem; background: transparent;
+    border: 1.5px solid var(--gold); color: var(--gold); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase;
+    transition: all 0.4s var(--transition-smooth); position: relative; overflow: hidden;
+}
+.hero-cta::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: var(--gold); transition: left 0.4s var(--transition-smooth); z-index: -1;
+}
+.hero-cta:hover::before { left: 0; }
+.hero-cta:hover { color: var(--ink); }
+.hero-visual { position: relative; display: flex; justify-content: center; align-items: center; }
+.hero-image-wrapper { position: relative; width: 100%; max-width: 480px; }
+.hero-image-wrapper img { width: 100%; height: auto; border-radius: 4px; filter: brightness(1.05) contrast(1.05); }
+.hero-image-glow {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); width: 80%; height: 80%;
+    background: radial-gradient(ellipse, rgba(168, 137, 78, 0.25) 0%, transparent 70%);
+    pointer-events: none; animation: pulse-glow 4s ease-in-out infinite;
+}
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+.hero-scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    color: rgba(239, 230, 216, 0.4); font-size: 0.75rem; letter-spacing: 3px;
+    text-transform: uppercase; animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+}
+section { padding: 6rem 2rem; position: relative; }
+.section-label {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+}
+.section-title {
+    font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; color: var(--ink);
+}
+.section-title.light { color: var(--sand); }
+.section-body {
+    font-size: 1.05rem; color: rgba(62, 54, 46, 0.75);
+    max-width: 600px; line-height: 1.9;
+}
+.section-body.light { color: rgba(239, 230, 216, 0.7); }
+.container { max-width: 1200px; margin: 0 auto; }
+.simbolismo { background: var(--sand); padding: 7rem 2rem; }
+.simbolismo-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center; max-width: 1100px; margin: 0 auto;
+}
+.simbolismo-text { max-width: 500px; }
+.simbolismo-visual { display: flex; justify-content: center; align-items: center; }
+.torus-svg-container { width: 320px; height: 320px; }
+.torus-svg-container svg { width: 100%; height: 100%; }
+.la-pieza { background: var(--cream); padding: 7rem 2rem; }
+.la-pieza-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center; max-width: 1100px; margin: 0 auto;
+}
+.la-pieza-visual { position: relative; }
+.la-pieza-visual img { width: 100%; border-radius: 4px; box-shadow: 0 20px 60px rgba(62, 54, 46, 0.12); }
+.materials-list { margin-top: 2.5rem; list-style: none; }
+.materials-list li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1.2rem; padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(62, 54, 46, 0.08);
+}
+.materials-list li:last-child { border-bottom: none; }
+.material-icon { width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.material-icon svg { width: 28px; height: 28px; stroke: var(--gold); stroke-width: 1.5; fill: none; }
+.material-text strong { display: block; font-weight: 500; color: var(--ink); margin-bottom: 0.2rem; }
+.material-text span { font-size: 0.9rem; color: rgba(62, 54, 46, 0.6); }
+.experiencia { background: var(--ink); padding: 7rem 2rem; position: relative; overflow: hidden; }
+.experiencia::before {
+    content: ''; position: absolute; top: -200px; right: -200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(168, 137, 78, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+.experiencia-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center; max-width: 1100px; margin: 0 auto;
+}
+.experiencia-steps { display: flex; flex-direction: column; gap: 2rem; margin-top: 2.5rem; }
+.exp-step { display: flex; gap: 1.5rem; align-items: flex-start; }
+.exp-step-num {
+    font-family: 'Fraunces', serif; font-size: 2.5rem; font-weight: 300;
+    color: var(--gold); line-height: 1; opacity: 0.6; min-width: 50px;
+}
+.exp-step-content h4 {
+    font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 400;
+    color: var(--sand); margin-bottom: 0.4rem;
+}
+.exp-step-content p { font-size: 0.95rem; color: rgba(239, 230, 216, 0.6); line-height: 1.7; }
+.experiencia-visual { display: flex; justify-content: center; }
+.qr-mockup {
+    width: 280px; height: 280px; background: rgba(239, 230, 216, 0.05);
+    border: 1px solid rgba(168, 137, 78, 0.2); border-radius: 8px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 2rem; position: relative;
+}
+.qr-mockup svg { width: 120px; height: 120px; margin-bottom: 1rem; }
+.qr-mockup span { font-size: 0.75rem; color: rgba(239, 230, 216, 0.4); letter-spacing: 2px; text-transform: uppercase; }
+.diferencia { background: var(--sand); padding: 7rem 2rem; }
+.diferencia-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+.diferencia-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; max-width: 1000px; margin: 0 auto; }
+.diff-card {
+    text-align: center; padding: 2.5rem 1.5rem; background: var(--white);
+    border-radius: 4px; transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth);
+}
+.diff-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(62, 54, 46, 0.1); }
+.diff-card-icon { width: 60px; height: 60px; margin: 0 auto 1.5rem; }
+.diff-card-icon svg { width: 100%; height: 100%; stroke: var(--gold); stroke-width: 1.2; fill: none; }
+.diff-card h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.8rem; color: var(--ink); }
+.diff-card p { font-size: 0.95rem; color: rgba(62, 54, 46, 0.65); line-height: 1.7; }
+.galeria { background: var(--ink); padding: 7rem 2rem; }
+.galeria-header { text-align: center; margin-bottom: 4rem; }
+.galeria-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 1200px; margin: 0 auto; }
+.galeria-item { position: relative; overflow: hidden; border-radius: 4px; aspect-ratio: 3/4; cursor: pointer; }
+.galeria-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+.galeria-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--transition-smooth), filter 0.6s; filter: brightness(0.85); }
+.galeria-item:hover img { transform: scale(1.08); filter: brightness(1); }
+.galeria-item-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 2rem 1.5rem 1.5rem;
+    background: linear-gradient(transparent, rgba(62, 54, 46, 0.8));
+    opacity: 0; transition: opacity 0.4s;
+}
+.galeria-item:hover .galeria-item-overlay { opacity: 1; }
+.galeria-item-overlay span { color: var(--sand); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
+.ritual { background: var(--sand); padding: 7rem 2rem; position: relative; overflow: hidden; }
+.ritual-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center; max-width: 1100px; margin: 0 auto;
+}
+.ritual-visual { display: flex; justify-content: center; align-items: center; }
+.ritual-torus-container { width: 300px; height: 300px; position: relative; }
+.ritual-torus-container svg { width: 100%; height: 100%; animation: torus-rotate 20s linear infinite; }
+@keyframes torus-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.ritual-steps { margin-top: 2rem; }
+.ritual-step {
+    display: flex; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(62, 54, 46, 0.08);
+}
+.ritual-step:last-child { border-bottom: none; }
+.ritual-step-icon { width: 48px; height: 48px; flex-shrink: 0; }
+.ritual-step-icon svg { width: 100%; height: 100%; stroke: var(--terra); stroke-width: 1.3; fill: none; }
+.ritual-step h4 { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 400; margin-bottom: 0.4rem; color: var(--ink); }
+.ritual-step p { font-size: 0.95rem; color: rgba(62, 54, 46, 0.65); line-height: 1.7; }
+.regalos { background: var(--cream); padding: 7rem 2rem; }
+.regalos-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+.regalos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; }
+.regalo-card {
+    background: var(--white); padding: 2.5rem 2rem; border-radius: 4px;
+    text-align: center; position: relative; transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s;
+    border: 1px solid rgba(62, 54, 46, 0.06);
+}
+.regalo-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(62, 54, 46, 0.08); }
+.regalo-card.locked::after {
+    content: ''; position: absolute; top: 1rem; right: 1rem;
+    width: 8px; height: 8px; background: var(--gold); border-radius: 50%;
+}
+.regalo-icon { width: 56px; height: 56px; margin: 0 auto 1.5rem; }
+.regalo-icon svg { width: 100%; height: 100%; stroke: var(--gold); stroke-width: 1.2; fill: none; }
+.regalo-card h3 { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 400; margin-bottom: 0.6rem; color: var(--ink); }
+.regalo-card p { font-size: 0.9rem; color: rgba(62, 54, 46, 0.6); line-height: 1.7; margin-bottom: 1rem; }
+.regalo-lock {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; color: var(--gold); letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 500;
+}
+.beneficios { background: var(--ink); padding: 7rem 2rem; position: relative; }
+.beneficios-header { text-align: center; margin-bottom: 4rem; }
+.beneficios-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+.beneficio-item { text-align: center; padding: 1.5rem; }
+.beneficio-icon { width: 52px; height: 52px; margin: 0 auto 1.2rem; }
+.beneficio-icon svg { width: 100%; height: 100%; stroke: var(--gold); stroke-width: 1.2; fill: none; }
+.beneficio-item h4 { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 400; color: var(--sand); margin-bottom: 0.6rem; }
+.beneficio-item p { font-size: 0.9rem; color: rgba(239, 230, 216, 0.55); line-height: 1.7; }
+.beneficios-disclaimer {
+    text-align: center; margin-top: 3rem; font-size: 0.8rem;
+    color: rgba(239, 230, 216, 0.35); max-width: 600px;
+    margin-left: auto; margin-right: auto;
+}
+.faq { background: var(--sand); padding: 7rem 2rem; }
+.faq-header { text-align: center; margin-bottom: 4rem; }
+.faq-list { max-width: 800px; margin: 0 auto; }
+details {
+    background: var(--white); border-radius: 4px; margin-bottom: 0.8rem;
+    overflow: hidden; transition: box-shadow 0.3s;
+}
+details:hover { box-shadow: 0 4px 20px rgba(62, 54, 46, 0.06); }
+summary {
+    padding: 1.3rem 1.8rem; font-weight: 500; font-size: 1rem;
+    color: var(--ink); cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: color 0.3s;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+    content: '+'; font-size: 1.5rem; font-weight: 300;
+    color: var(--gold); transition: transform 0.3s;
+}
+details[open] summary::after { transform: rotate(45deg); }
+details[open] summary { color: var(--gold); }
+.faq-answer { padding: 0 1.8rem 1.5rem; font-size: 0.95rem; color: rgba(62, 54, 46, 0.7); line-height: 1.8; }
+.cta-final { background: var(--ink); padding: 7rem 2rem; text-align: center; position: relative; overflow: hidden; }
+.cta-final-torus {
+    position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%);
+    width: 400px; height: 400px; opacity: 0.08; pointer-events: none;
+}
+.cta-final-content { position: relative; z-index: 2; max-width: 500px; margin: 0 auto; }
+.cta-final h2 {
+    font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400; color: var(--sand); margin-bottom: 1rem;
+}
+.cta-final p { color: rgba(239, 230, 216, 0.6); margin-bottom: 2.5rem; font-size: 1.05rem; }
+.waitlist-form { display: flex; gap: 0.8rem; max-width: 420px; margin: 0 auto; }
+.waitlist-form input {
+    flex: 1; padding: 1rem 1.5rem; border: 1px solid rgba(168, 137, 78, 0.3);
+    background: rgba(239, 230, 216, 0.05); color: var(--sand);
+    font-family: 'Jost', sans-serif; font-size: 0.95rem;
+    border-radius: 4px; outline: none; transition: border-color 0.3s;
+}
+.waitlist-form input::placeholder { color: rgba(239, 230, 216, 0.35); }
+.waitlist-form input:focus { border-color: var(--gold); }
+.waitlist-form button {
+    padding: 1rem 2rem; background: var(--gold); border: none; color: var(--ink);
+    font-family: 'Jost', sans-serif; font-weight: 500; font-size: 0.85rem;
+    letter-spacing: 1.5px; text-transform: uppercase; border-radius: 4px;
+    cursor: pointer; transition: background 0.3s, transform 0.2s;
+}
+.waitlist-form button:hover { background: #b8965a; transform: translateY(-2px); }
+.waitlist-confirmation {
+    display: none; padding: 2rem; background: rgba(168, 137, 78, 0.1);
+    border: 1px solid rgba(168, 137, 78, 0.2); border-radius: 4px; margin-top: 1.5rem;
+}
+.waitlist-confirmation.show { display: block; animation: fade-in 0.5s; }
+@keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.waitlist-confirmation p { color: var(--gold); font-size: 1rem; margin-bottom: 0.5rem; }
+.waitlist-confirmation span { color: rgba(239, 230, 216, 0.5); font-size: 0.85rem; }
+.privacy-note { margin-top: 1.5rem; font-size: 0.75rem; color: rgba(239, 230, 216, 0.35); }
+.privacy-note a { color: var(--gold); text-decoration: none; }
+footer {
+    background: var(--ink); padding: 3rem 2rem; text-align: center;
+    border-top: 1px solid rgba(239, 230, 216, 0.06);
+}
+.footer-logo { font-family: 'Fraunces', serif; font-size: 1.8rem; color: var(--gold); letter-spacing: 4px; margin-bottom: 0.5rem; }
+.footer-tagline { font-size: 0.8rem; color: rgba(239, 230, 216, 0.4); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 2rem; }
+.footer-social { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; }
+.footer-social a {
+    width: 40px; height: 40px; border: 1px solid rgba(168, 137, 78, 0.25);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s;
+}
+.footer-social a:hover { background: var(--gold); border-color: var(--gold); }
+.footer-social a svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; transition: stroke 0.3s; }
+.footer-social a:hover svg { stroke: var(--ink); }
+.footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
+.footer-links a { font-size: 0.8rem; color: rgba(239, 230, 216, 0.4); text-decoration: none; transition: color 0.3s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 0.75rem; color: rgba(239, 230, 216, 0.25); }
+@media (max-width: 900px) {
+    .hero-content, .simbolismo-grid, .la-pieza-grid, .experiencia-grid, .ritual-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-text { text-align: center; }
+    .hero-subtitle { margin-left: auto; margin-right: auto; }
+    .diferencia-grid, .regalos-grid { grid-template-columns: 1fr; max-width: 400px; }
+    .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+    .galeria-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+    .beneficios-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(62, 54, 46, 0.98); flex-direction: column; padding: 2rem; gap: 1.5rem; }
+    .nav-links.active { display: flex; }
+    .nav-toggle { display: flex; }
+    nav { padding: 1rem 1.5rem; }
+    nav.scrolled { padding: 0.8rem 1.5rem; }
+    .waitlist-form { flex-direction: column; }
+}
+@media (max-width: 600px) {
+    section { padding: 4rem 1.5rem; }
+    .galeria-grid { grid-template-columns: 1fr; }
+    .galeria-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+    .beneficios-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
-<!-- ============ 1 · HERO ============ -->
-<header class="hero oscuro">
-<div class="contenedor">
-<nav class="hero-nav">
-<a class="wordmark" href="#">NAAB</a>
-<div class="nav-links" style="display:flex;gap:28px">
-<a class="enlace" href="#pieza">La pieza</a>
-<a class="enlace" href="#beneficios">Beneficios</a>
-<a class="enlace" href="#regalos">Regalos</a>
-<a class="enlace" href="#faq">FAQ</a>
-<a class="enlace" href="#lista">Lista de espera</a>
-</div>
+<nav id="navbar">
+    <a href="#" class="nav-logo">NAAB</a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#simbolismo">Símbolo</a></li>
+        <li><a href="#la-pieza">La Pieza</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#faq">Preguntas</a></li>
+    </ul>
 </nav>
-</div>
-<div class="contenedor hero-cuerpo">
-<div>
-<p class="eyebrow">Arte toroidal · hecho a mano</p>
-<h1 class="hero-titulo">Un recordatorio<br>de tu <em>centro</em></h1>
-<p class="hero-texto">NAAB significa centro y origen en lengua maya. Cada pieza nace del torus —la forma en la que fluye la energía del universo— trenzada a mano en cobre chapado en oro de 14k, con un cuarzo natural incrustado en resina, para acompañarte de regreso a tu esencia.</p>
-<p class="hero-tagline"><b>Centro</b> · <b>Origen</b> · <b>Conexión</b></p>
-<div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:40px">
-<a class="boton" href="#simbolismo" style="margin-top:0">Descubre la pieza</a>
-<a class="boton" href="registro.html" style="margin-top:0">Registra tu dije</a>
-</div>
-</div>
-<figure class="hero-imagen">
-<img src="assets/dije-hero.jpg" alt="Dije toroidal NAAB en resina con cuarzo ojo de tigre incrustado, trenzado veneciano de cobre chapado en oro de 14k, sobre piedra oscura">
-<figcaption>Dije toroide · pieza de debut</figcaption>
-</figure>
-</div>
-</header>
 
-<!-- ============ 2 · SIMBOLISMO ============ -->
-<section id="simbolismo">
-<div class="contenedor simbolismo-grid">
-<div class="revelar">
-<p class="eyebrow">El símbolo</p>
-<h2 class="seccion-titulo">La geometría que sostiene todo lo que vive</h2>
-<p>El torus es la forma más estable del universo: la encuentras en el campo magnético de la Tierra, en el latido del corazón, en la semilla que germina. Energía que sale, gira y regresa a su origen. Un ciclo que nunca se rompe.</p>
-<p>La flor de loto completa la ecuación: nace del lodo, atraviesa el agua y florece hacia la luz. Transformación con raíz. NAAB une ambas formas en una sola pieza — el flujo y el florecimiento, el centro y el camino de vuelta a él.</p>
-</div>
-<figure class="ecuacion revelar" aria-label="El símbolo de NAAB une la flor de loto y el torus">
-<svg viewBox="-60 -55 120 110" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-<path d="M0 42 C -16 18, -12 -22, 0 -44 C 12 -22, 16 18, 0 42 Z"/>
-<path d="M0 42 C -30 26, -44 -6, -38 -30 C -18 -22, -4 4, 0 42 Z"/>
-<path d="M0 42 C 30 26, 44 -6, 38 -30 C 18 -22, 4 4, 0 42 Z"/>
-<path d="M0 42 C -44 38, -58 14, -56 -2 C -36 0, -14 16, 0 42 Z"/>
-<path d="M0 42 C 44 38, 58 14, 56 -2 C 36 0, 14 16, 0 42 Z"/>
-</svg>
-<span class="signo">+</span>
-<svg id="torus-simbolo" viewBox="-70 -70 140 140" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"></svg>
-<figcaption>Loto · Torus · Naab</figcaption>
-</figure>
-</div>
+<section class="hero" id="hero">
+    <div class="hero-bg-torus">
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#A8894E" stroke-width="0.5" opacity="0.5">
+                <ellipse cx="200" cy="200" rx="140" ry="60" transform="rotate(-15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="140" ry="60" transform="rotate(15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="140" ry="60" transform="rotate(45 200 200)"/>
+                <ellipse cx="200" cy="200" rx="140" ry="60" transform="rotate(75 200 200)"/>
+                <ellipse cx="200" cy="200" rx="100" ry="40" transform="rotate(-15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="100" ry="40" transform="rotate(15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="100" ry="40" transform="rotate(45 200 200)"/>
+                <ellipse cx="200" cy="200" rx="60" ry="25" transform="rotate(-15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="60" ry="25" transform="rotate(15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="180" ry="80" transform="rotate(-15 200 200)" stroke-dasharray="4 8"/>
+            </g>
+        </svg>
+    </div>
+    <div class="hero-content">
+        <div class="hero-text reveal">
+            <h1 class="hero-tagline">Centro <em>·</em> Origen <em>·</em> Conexión</h1>
+            <p class="hero-subtitle">Arte toroidal hecho a mano. Un dije de geometría sagrada que une cobre, resina y cuarzo con una experiencia digital personalizada.</p>
+            <a href="#simbolismo" class="hero-cta">Descubre la pieza</a>
+        </div>
+        <div class="hero-visual reveal reveal-delay-2">
+            <div class="hero-image-wrapper">
+                <div class="hero-image-glow"></div>
+                <img src="naab3.jpeg" alt="Dije toroidal NAAB - arte de geometría sagrada en cobre, resina y cuarzo">
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll-hint">Desplaza</div>
 </section>
 
-<!-- ============ 3 · LA PIEZA ============ -->
-<section class="fondo-arena" id="pieza">
-<div class="contenedor pieza-grid">
-<div class="revelar">
-<p class="eyebrow">La pieza</p>
-<h2 class="seccion-titulo">Trenzada a mano, una revolución a la vez</h2>
-<p>Cada dije se construye con un solo hilo continuo de cobre que recorre el cuerpo del torus en espiral. Al completar cada vuelta, el hilo cruza y cambia de dirección sin cortarse —el trenzado veneciano— formando una red de rombos que abraza la resina y el cuarzo en su interior.</p>
-<ul class="lista-materiales">
-<li><strong>Cobre chapado en oro 14k</strong><span>trenzado a mano en patrón veneciano continuo</span></li>
-<li><strong>Resina</strong><span>cuerpo toroidal translúcido que juega con la luz</span></li>
-<li><strong>Cuarzo natural</strong><span>piedra incrustada en el centro como semilla de intención — varía según la pieza</span></li>
-</ul>
-</div>
-<img class="revelar" src="assets/empaque.jpg" alt="Caja NAAB abierta con bolsa de lino, certificado de autenticidad y detalle dorado">
-</div>
+<section class="simbolismo" id="simbolismo">
+    <div class="simbolismo-grid">
+        <div class="simbolismo-text reveal">
+            <p class="section-label">El Símbolo</p>
+            <h2 class="section-title">La geometría que sostiene todo lo que vive</h2>
+            <p class="section-body">El torus es la forma más estable del universo: la encuentras en el campo magnético de la Tierra, en el latido del corazón, en la semilla que germina. Energía que sale, gira y regresa a su origen. Un ciclo que nunca se rompe.</p>
+            <p class="section-body" style="margin-top:1.5rem;">La flor de loto completa la ecuación: nace del lodo, atraviesa el agua y florece hacia la luz. Transformación con raíz. NAAB une ambas formas en una sola pieza — el flujo y el florecimiento, el centro y el camino de vuelta a él.</p>
+        </div>
+        <div class="simbolismo-visual reveal reveal-delay-2">
+            <div class="torus-svg-container">
+                <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="torusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#A8894E"/>
+                            <stop offset="100%" stop-color="#B5674C"/>
+                        </linearGradient>
+                    </defs>
+                    <g stroke="url(#torusGrad)" stroke-width="1" fill="none" opacity="0.9">
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(-20 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(0 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(20 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(40 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(60 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(80 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(100 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(120 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(140 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(160 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="70" ry="30" transform="rotate(-20 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="70" ry="30" transform="rotate(20 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="70" ry="30" transform="rotate(60 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="70" ry="30" transform="rotate(100 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="70" ry="30" transform="rotate(140 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="35" ry="15" transform="rotate(-20 150 150)" stroke-dasharray="3 6"/>
+                        <path d="M 85 150 Q 150 105 215 150" stroke-width="0.8"/>
+                        <path d="M 70 150 Q 150 90 230 150" stroke-width="0.8"/>
+                        <path d="M 60 150 Q 150 75 240 150" stroke-width="0.8"/>
+                        <path d="M 85 150 Q 150 195 215 150" stroke-width="0.8"/>
+                        <path d="M 70 150 Q 150 210 230 150" stroke-width="0.8"/>
+                    </g>
+                    <g stroke="#A8894E" stroke-width="0.8" fill="none" opacity="0.4">
+                        <path d="M 150 35 Q 165 70 150 95 Q 135 70 150 35"/>
+                        <path d="M 150 35 Q 165 70 150 95 Q 135 70 150 35" transform="rotate(45 150 150)"/>
+                        <path d="M 150 35 Q 165 70 150 95 Q 135 70 150 35" transform="rotate(90 150 150)"/>
+                        <path d="M 150 35 Q 165 70 150 95 Q 135 70 150 35" transform="rotate(135 150 150)"/>
+                        <path d="M 150 35 Q 165 70 150 95 Q 135 70 150 35" transform="rotate(180 150 150)"/>
+                        <path d="M 150 35 Q 165 70 150 95 Q 135 70 150 35" transform="rotate(225 150 150)"/>
+                        <path d="M 150 35 Q 165 70 150 95 Q 135 70 150 35" transform="rotate(270 150 150)"/>
+                        <path d="M 150 35 Q 165 70 150 95 Q 135 70 150 35" transform="rotate(315 150 150)"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- ============ 3B · CÓMO SE USA ============ -->
-<section id="ritual">
-<div class="contenedor experiencia-grid">
-<div class="revelar">
-<p class="eyebrow">El ritual</p>
-<h2 class="seccion-titulo">Cómo llevar tu centro</h2>
-<div class="ritual-lista">
-<div class="ritual-item">
-<span class="ritual-num">i</span>
-<div>
-<h3>Actívala</h3>
-<p>Al recibirla, sostenla entre tus manos unos segundos y fija una intención: calma, claridad, enfoque. Es el gesto que convierte la pieza en un objeto tuyo, no solo hecho para ti.</p>
-</div>
-</div>
-<div class="ritual-item">
-<span class="ritual-num">ii</span>
-<div>
-<h3>Llévala contigo</h3>
-<p>No hay una forma correcta de usarla — cerca del corazón, en la muñeca o donde la sientas presente. Vuelve a ella cuando la mente se disperse: es tu recordatorio físico de regresar al centro.</p>
-</div>
-</div>
-<div class="ritual-item">
-<span class="ritual-num">iii</span>
-<div>
-<h3>Cuídala</h3>
-<p>Límpiala con un paño seco y guárdala en su bolsa de lino. Evita el contacto prolongado con perfumes, cremas y agua clorada para que el cobre chapado en oro conserve su brillo.</p>
-</div>
-</div>
-</div>
-</div>
-<figure class="revelar ritual-torus" aria-hidden="true">
-<svg id="torus-ritual" viewBox="-70 -70 140 140" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"></svg>
-</figure>
-</div>
+<section class="la-pieza" id="la-pieza">
+    <div class="la-pieza-grid">
+        <div class="la-pieza-visual reveal">
+            <img src="brand_board.jpg" alt="Empaque y presentación de la pieza NAAB">
+        </div>
+        <div class="la-pieza-text reveal reveal-delay-2">
+            <p class="section-label">La Pieza</p>
+            <h2 class="section-title">Trenzada a mano, una revolución a la vez</h2>
+            <p class="section-body">Cada dije se construye con un solo hilo continuo de cobre que recorre el cuerpo del torus en espiral. Al completar cada vuelta, el hilo cruza y cambia de dirección sin cortarse — el trenzado veneciano — formando una red de rombos que abraza la resina y el cuarzo en su interior.</p>
+            <ul class="materials-list">
+                <li>
+                    <div class="material-icon">
+                        <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"/><path d="M12 20 Q20 10 28 20 Q20 30 12 20"/><line x1="20" y1="6" x2="20" y2="34"/></svg>
+                    </div>
+                    <div class="material-text"><strong>Cobre chapado en oro 14k</strong><span>Trenzado a mano en patrón veneciano continuo</span></div>
+                </li>
+                <li>
+                    <div class="material-icon">
+                        <svg viewBox="0 0 40 40"><ellipse cx="20" cy="20" rx="12" ry="16"/><ellipse cx="20" cy="20" rx="6" ry="10"/></svg>
+                    </div>
+                    <div class="material-text"><strong>Resina epóxica</strong><span>Cuerpo toroidal translúcido que juega con la luz</span></div>
+                </li>
+                <li>
+                    <div class="material-icon">
+                        <svg viewBox="0 0 40 40"><polygon points="20,6 32,14 32,26 20,34 8,26 8,14"/><line x1="20" y1="6" x2="20" y2="34"/><line x1="8" y1="14" x2="32" y2="26"/><line x1="32" y1="14" x2="8" y2="26"/></svg>
+                    </div>
+                    <div class="material-text"><strong>Cuarzo natural</strong><span>Piedra incrustada en el centro como semilla de intención</span></div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </section>
 
-<!-- ============ 4 · LA EXPERIENCIA ============ -->
-<section class="oscuro" id="experiencia">
-<div class="contenedor experiencia-grid">
-<div class="revelar">
-<p class="eyebrow">La experiencia</p>
-<h2 class="seccion-titulo">Tu pieza sabe quién eres</h2>
-<div class="paso">
-<span class="paso-num">i</span>
-<div>
-<h3>Escanea</h3>
-<p>Cada NAAB incluye un código único. Al escanearlo, tu pieza deja de ser un objeto y se convierte en una llave.</p>
-</div>
-</div>
-<div class="paso">
-<span class="paso-num">ii</span>
-<div>
-<h3>Regístrala</h3>
-<p>Con tu nombre y fecha de nacimiento, tu pieza genera un perfil que solo te pertenece a ti.</p>
-</div>
-</div>
-<div class="paso">
-<span class="paso-num">iii</span>
-<div>
-<h3>Descubre</h3>
-<p>Tu signo y su elemento, tu piedra de nacimiento, tu número de vida. Una lectura personal que acompaña a la pieza para siempre.</p>
-</div>
-</div>
-</div>
-<img class="revelar" src="assets/caja.jpg" alt="Caja negra NAAB con el símbolo de loto y torus grabado en dorado">
-</div>
+<section class="experiencia" id="experiencia">
+    <div class="experiencia-grid">
+        <div class="experiencia-text reveal">
+            <p class="section-label">La Experiencia</p>
+            <h2 class="section-title light">Tu pieza sabe quién eres</h2>
+            <p class="section-body light">Cada NAAB incluye una experiencia digital que ninguna otra pieza artesanal ofrece. Un código QR único que transforma el objeto en una llave personal.</p>
+            <div class="experiencia-steps">
+                <div class="exp-step">
+                    <span class="exp-step-num">i</span>
+                    <div class="exp-step-content"><h4>Escanea</h4><p>Cada NAAB incluye un código único. Al escanearlo, tu pieza deja de ser un objeto y se convierte en una llave.</p></div>
+                </div>
+                <div class="exp-step">
+                    <span class="exp-step-num">ii</span>
+                    <div class="exp-step-content"><h4>Regístrala</h4><p>Con tu nombre y fecha de nacimiento, tu pieza genera un perfil que solo te pertenece a ti.</p></div>
+                </div>
+                <div class="exp-step">
+                    <span class="exp-step-num">iii</span>
+                    <div class="exp-step-content"><h4>Descubre</h4><p>Tu signo y su elemento, tu piedra de nacimiento, tu número de vida. Una lectura personal que acompaña a la pieza para siempre.</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="experiencia-visual reveal reveal-delay-2">
+            <div class="qr-mockup">
+                <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="5" width="35" height="35" rx="3" stroke="#A8894E" stroke-width="2"/>
+                    <rect x="12" y="12" width="21" height="21" rx="2" stroke="#A8894E" stroke-width="2"/>
+                    <rect x="17" y="17" width="11" height="11" rx="1" fill="#A8894E"/>
+                    <rect x="80" y="5" width="35" height="35" rx="3" stroke="#A8894E" stroke-width="2"/>
+                    <rect x="87" y="12" width="21" height="21" rx="2" stroke="#A8894E" stroke-width="2"/>
+                    <rect x="92" y="17" width="11" height="11" rx="1" fill="#A8894E"/>
+                    <rect x="5" y="80" width="35" height="35" rx="3" stroke="#A8894E" stroke-width="2"/>
+                    <rect x="12" y="87" width="21" height="21" rx="2" stroke="#A8894E" stroke-width="2"/>
+                    <rect x="17" y="92" width="11" height="11" rx="1" fill="#A8894E"/>
+                    <rect x="50" y="5" width="8" height="8" fill="#A8894E" opacity="0.6"/>
+                    <rect x="65" y="5" width="8" height="8" fill="#A8894E" opacity="0.4"/>
+                    <rect x="50" y="18" width="8" height="8" fill="#A8894E" opacity="0.5"/>
+                    <rect x="65" y="18" width="8" height="8" fill="#A8894E" opacity="0.7"/>
+                    <rect x="50" y="50" width="8" height="8" fill="#A8894E" opacity="0.8"/>
+                    <rect x="65" y="50" width="8" height="8" fill="#A8894E" opacity="0.5"/>
+                    <rect x="80" y="50" width="8" height="8" fill="#A8894E" opacity="0.6"/>
+                    <rect x="95" y="50" width="8" height="8" fill="#A8894E" opacity="0.4"/>
+                    <rect x="50" y="65" width="8" height="8" fill="#A8894E" opacity="0.5"/>
+                    <rect x="65" y="65" width="8" height="8" fill="#A8894E" opacity="0.7"/>
+                    <rect x="80" y="65" width="8" height="8" fill="#A8894E" opacity="0.5"/>
+                    <rect x="50" y="80" width="8" height="8" fill="#A8894E" opacity="0.6"/>
+                    <rect x="65" y="80" width="8" height="8" fill="#A8894E" opacity="0.4"/>
+                    <rect x="80" y="80" width="8" height="8" fill="#A8894E" opacity="0.7"/>
+                    <rect x="95" y="80" width="8" height="8" fill="#A8894E" opacity="0.5"/>
+                    <rect x="50" y="95" width="8" height="8" fill="#A8894E" opacity="0.5"/>
+                    <rect x="65" y="95" width="8" height="8" fill="#A8894E" opacity="0.6"/>
+                    <rect x="80" y="95" width="8" height="8" fill="#A8894E" opacity="0.4"/>
+                    <rect x="95" y="95" width="8" height="8" fill="#A8894E" opacity="0.7"/>
+                    <rect x="5" y="50" width="8" height="8" fill="#A8894E" opacity="0.5"/>
+                    <rect x="18" y="50" width="8" height="8" fill="#A8894E" opacity="0.6"/>
+                    <rect x="32" y="50" width="8" height="8" fill="#A8894E" opacity="0.4"/>
+                    <rect x="5" y="65" width="8" height="8" fill="#A8894E" opacity="0.7"/>
+                    <rect x="18" y="65" width="8" height="8" fill="#A8894E" opacity="0.5"/>
+                    <rect x="32" y="65" width="8" height="8" fill="#A8894E" opacity="0.6"/>
+                </svg>
+                <span>Código QR único</span>
+            </div>
+        </div>
+    </div>
 </section>
 
-
-<!-- ============ 4B · REGALOS DIGITALES ============ -->
-<section class="fondo-arena" id="regalos">
-<div class="contenedor">
-<div class="revelar" style="text-align:center">
-<p class="eyebrow">Un regalo más</p>
-<h2 class="seccion-titulo">Lo que desbloqueas al registrarla</h2>
-<p style="max-width:52ch;margin:0 auto;color:var(--tinta-suave)">Además de tu carta de nacimiento, tu registro te da acceso a una pequeña biblioteca pensada para tu elemento — sin costo, para siempre.</p>
-</div>
-<div class="tres">
-<article class="revelar">
-<svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 20v-3a11 11 0 0 1 22 0v3"/><rect x="5" y="20" width="7" height="10" rx="2"/><rect x="26" y="20" width="7" height="10" rx="2"/></svg>
-<h3>Meditación guiada</h3>
-<p>Un audio breve, alineado a tu elemento — agua, tierra, aire o fuego — para volver al centro cuando lo necesites.</p>
-</article>
-<article class="revelar">
-<svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 24V14M15 27V11M19 30V8M23 27V11M30 24V14"/></svg>
-<h3>Frecuencias Solfeggio</h3>
-<p>Una selección curada por elemento, para acompañar tu práctica, tu descanso o el momento en que la lleves puesta.</p>
-</article>
-<article class="revelar">
-<svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M11 5h11l6 6v22a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M22 5v6h6"/><path d="M13 21h12M13 25h12M13 17h6"/></svg>
-<h3>Guía de activación y cuidado</h3>
-<p>Un PDF descargable con el ritual completo — cómo activarla, llevarla y conservarla — para tenerlo siempre a la mano.</p>
-</article>
-</div>
-<div class="regalos-cta revelar">
-<a class="boton boton-sutil" href="registro.html">Registra tu dije y desbloquéalos</a>
-</div>
-</div>
+<section class="diferencia" id="diferencia">
+    <div class="container">
+        <div class="diferencia-header reveal">
+            <p class="section-label">Por qué es distinta</p>
+            <h2 class="section-title">Tres razones para llevarla</h2>
+        </div>
+        <div class="diferencia-grid">
+            <div class="diff-card reveal reveal-delay-1">
+                <div class="diff-card-icon">
+                    <svg viewBox="0 0 60 60"><path d="M30 10 L45 20 L45 40 L30 50 L15 40 L15 20 Z"/><circle cx="30" cy="30" r="8"/><line x1="30" y1="10" x2="30" y2="22"/><line x1="30" y1="38" x2="30" y2="50"/><line x1="15" y1="20" x2="23" y2="26"/><line x1="37" y1="34" x2="45" y2="40"/><line x1="45" y1="20" x2="37" y2="26"/><line x1="23" y1="34" x2="15" y2="40"/></svg>
+                </div>
+                <h3>Pieza única</h3>
+                <p>Ningún trenzado se repite. El cobre, la resina y el cuarzo natural hacen que cada dije sea irrepetible, como quien lo lleva.</p>
+            </div>
+            <div class="diff-card reveal reveal-delay-2">
+                <div class="diff-card-icon">
+                    <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="20"/><path d="M30 15 L30 30 L40 38"/><path d="M30 10 L30 14"/><path d="M30 46 L30 50"/><path d="M10 30 L14 30"/><path d="M46 30 L50 30"/></svg>
+                </div>
+                <h3>Significado con raíz</h3>
+                <p>Geometría sagrada y lengua maya: una pieza que no decora, recuerda. Centro, origen y conexión en tu pecho.</p>
+            </div>
+            <div class="diff-card reveal reveal-delay-3">
+                <div class="diff-card-icon">
+                    <svg viewBox="0 0 60 60"><rect x="12" y="8" width="36" height="44" rx="4"/><line x1="20" y1="18" x2="40" y2="18"/><line x1="20" y1="26" x2="35" y2="26"/><line x1="20" y1="34" x2="38" y2="34"/><circle cx="42" cy="42" r="10" fill="none"/><path d="M38 42 L42 46 L48 38"/></svg>
+                </div>
+                <h3>Experiencia viva</h3>
+                <p>La única artesanía toroidal con un alma digital: tu pieza guarda una lectura personal que crece contigo.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- ============ 5 · POR QUÉ ES DISTINTA ============ -->
-<section id="distinta">
-<div class="contenedor">
-<div class="revelar" style="text-align:center">
-<p class="eyebrow">Por qué es distinta</p>
-<h2 class="seccion-titulo">Tres razones para llevarla</h2>
-</div>
-<div class="tres">
-<article class="revelar">
-<svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="19" cy="19" r="13"/><circle cx="19" cy="19" r="5"/></svg>
-<h3>Pieza única</h3>
-<p>Ningún trenzado se repite. El cobre chapado en oro, la resina y el cuarzo natural hacen que cada dije sea irrepetible, como quien lo lleva.</p>
-</article>
-<article class="revelar">
-<svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M19 32 C 10 26, 5 18, 8 10 C 14 12, 18 18, 19 32 Z"/><path d="M19 32 C 28 26, 33 18, 30 10 C 24 12, 20 18, 19 32 Z"/></svg>
-<h3>Significado con raíz</h3>
-<p>Geometría sagrada y lengua maya: una pieza que no decora, recuerda. Centro, origen y conexión en tu pecho.</p>
-</article>
-<article class="revelar">
-<svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="8" y="8" width="22" height="22" rx="2"/><path d="M13 13h4v4h-4zM21 13h4M21 17h4M13 21h4M13 25h4M21 21h4v4h-4z"/></svg>
-<h3>Experiencia viva</h3>
-<p>La única artesanía toroidal con un alma digital: tu pieza guarda una lectura personal que crece contigo.</p>
-</article>
-</div>
-</div>
+<section class="galeria" id="galeria">
+    <div class="container">
+        <div class="galeria-header reveal">
+            <p class="section-label">Galería</p>
+            <h2 class="section-title light">La luz atraviesa cada pieza</h2>
+        </div>
+        <div class="galeria-grid">
+            <div class="galeria-item reveal">
+                <img src="naab3.jpeg" alt="Dije NAAB - vista frontal con luz atravesando el cuarzo">
+                <div class="galeria-item-overlay"><span>Vista principal</span></div>
+            </div>
+            <div class="galeria-item reveal reveal-delay-1">
+                <img src="gallery_1.png" alt="Dije toroidal en mano - detalle del trenzado veneciano">
+                <div class="galeria-item-overlay"><span>En tu mano</span></div>
+            </div>
+            <div class="galeria-item reveal reveal-delay-2">
+                <img src="gallery_2.png" alt="Colección de dijes toroidales con patrones variados">
+                <div class="galeria-item-overlay"><span>Cada pieza es única</span></div>
+            </div>
+            <div class="galeria-item reveal reveal-delay-3">
+                <img src="brand_board.jpg" alt="Presentación completa de la pieza NAAB con empaque">
+                <div class="galeria-item-overlay"><span>Presentación</span></div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- ============ 6 · GALERÍA ============ -->
-<section class="fondo-arena" id="galeria">
-<div class="contenedor">
-<div class="revelar" style="text-align:center">
-<p class="eyebrow">Galería</p>
-<h2 class="seccion-titulo">La luz atraviesa cada pieza</h2>
-</div>
-<div class="galeria">
-<figure class="revelar"><img src="assets/dije-hero.jpg" alt="Dije toroidal NAAB colgado, vista frontal"></figure>
-<figure class="revelar"><img src="assets/empaque.jpg" alt="Presentación de la pieza NAAB en su caja con bolsa de lino"></figure>
-<figure class="revelar pendiente">Próxima sesión</figure>
-</div>
-</div>
+<section class="ritual" id="ritual">
+    <div class="ritual-grid">
+        <div class="ritual-visual reveal">
+            <div class="ritual-torus-container">
+                <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="ritualGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#A8894E"/>
+                            <stop offset="100%" stop-color="#B5674C"/>
+                        </linearGradient>
+                    </defs>
+                    <g stroke="url(#ritualGrad)" stroke-width="0.8" fill="none" opacity="0.7">
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(-20 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(0 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(20 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(40 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(60 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(80 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(100 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(120 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(140 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="110" ry="45" transform="rotate(160 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="70" ry="30" transform="rotate(-20 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="70" ry="30" transform="rotate(20 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="70" ry="30" transform="rotate(60 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="70" ry="30" transform="rotate(100 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="70" ry="30" transform="rotate(140 150 150)"/>
+                        <ellipse cx="150" cy="150" rx="35" ry="15" transform="rotate(-20 150 150)" stroke-dasharray="3 6"/>
+                        <path d="M 85 150 Q 150 105 215 150" stroke-width="0.6"/>
+                        <path d="M 70 150 Q 150 90 230 150" stroke-width="0.6"/>
+                        <path d="M 60 150 Q 150 75 240 150" stroke-width="0.6"/>
+                        <path d="M 85 150 Q 150 195 215 150" stroke-width="0.6"/>
+                        <path d="M 70 150 Q 150 210 230 150" stroke-width="0.6"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <div class="ritual-text reveal reveal-delay-2">
+            <p class="section-label">El Ritual</p>
+            <h2 class="section-title">Cómo llevar tu centro</h2>
+            <div class="ritual-steps">
+                <div class="ritual-step">
+                    <div class="ritual-step-icon">
+                        <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M24 12 L24 24 L32 30"/><circle cx="24" cy="24" r="3"/></svg>
+                    </div>
+                    <div>
+                        <h4>Actívala</h4>
+                        <p>Al recibirla, sostenla entre tus manos unos segundos y fija una intención: calma, claridad, enfoque. Es el gesto que convierte la pieza en un objeto tuyo.</p>
+                    </div>
+                </div>
+                <div class="ritual-step">
+                    <div class="ritual-step-icon">
+                        <svg viewBox="0 0 48 48"><path d="M12 36 Q24 12 36 36"/><circle cx="24" cy="20" r="4"/><line x1="24" y1="8" x2="24" y2="16"/></svg>
+                    </div>
+                    <div>
+                        <h4>Llévala contigo</h4>
+                        <p>No hay una forma correcta de usarla — cerca del corazón, en la muñeca o donde la sientas presente. Vuelve a ella cuando la mente se disperse.</p>
+                    </div>
+                </div>
+                <div class="ritual-step">
+                    <div class="ritual-step-icon">
+                        <svg viewBox="0 0 48 48"><rect x="10" y="14" width="28" height="24" rx="3"/><line x1="16" y1="20" x2="32" y2="20"/><line x1="16" y1="26" x2="28" y2="26"/><line x1="16" y1="32" x2="24" y2="32"/></svg>
+                    </div>
+                    <div>
+                        <h4>Cuídala</h4>
+                        <p>Límpiala con un paño seco y guárdala en su bolsa de lino. Evita el contacto prolongado con perfumes, cremas y agua clorada para que el cobre conserve su brillo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- ============ 7 · BENEFICIOS ============ -->
-<section class="oscuro" id="beneficios">
-<div class="contenedor">
-<div class="revelar" style="text-align:center">
-<p class="eyebrow">Lo que acompaña</p>
-<h2 class="seccion-titulo">No promete, recuerda</h2>
-<p style="max-width:54ch;margin:0 auto;color:rgba(246,240,227,.7)">NAAB no es un amuleto ni un dispositivo médico. Es un objeto con intención: una forma geométrica que te invita a volver al centro cada vez que la tocas o la ves.</p>
-</div>
-<div class="beneficios-grid">
-<article class="revelar">
-<svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="21" cy="21" r="16"/><path d="M21 12v9l6 4"/></svg>
-<h3>Pausa consciente</h3>
-<p>El gesto de tocar la pieza interrumpe el piloto automático. Un micro-ritual para volver al momento presente.</p>
-</article>
-<article class="revelar">
-<svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="21" cy="21" r="16"/><path d="M14 21h14M21 14v14"/></svg>
-<h3>Enfoque e intención</h3>
-<p>La intención que fijaste al activarla permanece como ancla. Cada vez que la sientes en el pecho, te acuerdas de tu propósito.</p>
-</article>
-<article class="revelar">
-<svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M21 5a16 16 0 1 0 0 32 16 16 0 0 0 0-32Z"/><path d="M21 5c-4 5-6 10-6 16s2 11 6 16"/><path d="M21 5c4 5 6 10 6 16s-2 11-6 16"/><path d="M5 21h32"/></svg>
-<h3>Conexión simbólica</h3>
-<p>El torus conecta lo micro con lo macro. Llevarlo es recordar que eres parte de algo más grande, no separado de ello.</p>
-</article>
-<article class="revelar">
-<svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M21 5v6M21 31v6M5 21h6M31 21h6"/><circle cx="21" cy="21" r="8"/><circle cx="21" cy="21" r="16"/></svg>
-<h3>Identidad personal</h3>
-<p>Tu carta de nacimiento, tu elemento, tu número de vida — la capa digital convierte la pieza en un espejo simbólico de quien eres.</p>
-</article>
-</div>
-</div>
+<section class="regalos" id="regalos">
+    <div class="container">
+        <div class="regalos-header reveal">
+            <p class="section-label">Un regalo más</p>
+            <h2 class="section-title">Lo que desbloqueas al registrarla</h2>
+            <p class="section-body" style="margin:1rem auto 0; text-align:center;">Además de tu carta de nacimiento, tu registro te da acceso a una pequeña biblioteca pensada para tu elemento — sin costo, para siempre.</p>
+        </div>
+        <div class="regalos-grid">
+            <div class="regalo-card reveal reveal-delay-1 locked">
+                <div class="regalo-icon">
+                    <svg viewBox="0 0 56 56"><circle cx="28" cy="20" r="10"/><path d="M28 30 L28 48"/><path d="M20 38 Q28 44 36 38"/><path d="M16 48 Q28 54 40 48"/><circle cx="28" cy="16" r="2" fill="#A8894E"/></svg>
+                </div>
+                <h3>Meditación guiada</h3>
+                <p>Un audio breve, alineado a tu elemento — agua, tierra, aire o fuego — para volver al centro cuando lo necesites.</p>
+                <span class="regalo-lock">Regístrate para desbloquear</span>
+            </div>
+            <div class="regalo-card reveal reveal-delay-2 locked">
+                <div class="regalo-icon">
+                    <svg viewBox="0 0 56 56"><path d="M8 28 Q14 20 20 28 T32 28 T44 28 T56 28"/><path d="M8 36 Q14 28 20 36 T32 36 T44 36 T56 36"/><path d="M8 20 Q14 12 20 20 T32 20 T44 20 T56 20"/></svg>
+                </div>
+                <h3>Frecuencias Solfeggio</h3>
+                <p>Una selección curada por elemento, para acompañar tu práctica, tu descanso o el momento en que la lleves puesta.</p>
+                <span class="regalo-lock">Regístrate para desbloquear</span>
+            </div>
+            <div class="regalo-card reveal reveal-delay-3 locked">
+                <div class="regalo-icon">
+                    <svg viewBox="0 0 56 56"><rect x="10" y="6" width="36" height="44" rx="3"/><line x1="18" y1="16" x2="38" y2="16"/><line x1="18" y1="24" x2="34" y2="24"/><line x1="18" y1="32" x2="36" y2="32"/><line x1="18" y1="40" x2="30" y2="40"/><path d="M38 36 L44 42 L38 48"/><path d="M32 42 L44 42"/></svg>
+                </div>
+                <h3>Guía de activación</h3>
+                <p>Un PDF descargable con el ritual completo — cómo activarla, llevarla y conservarla — para tenerlo siempre a la mano.</p>
+                <span class="regalo-lock">Regístrate para desbloquear</span>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- ============ 8 · FAQ ============ -->
-<section id="faq">
-<div class="contenedor">
-<div class="revelar" style="text-align:center">
-<p class="eyebrow">Preguntas frecuentes</p>
-<h2 class="seccion-titulo">Todo lo que necesitas saber</h2>
-</div>
-<div class="faq revelar">
-
-<details>
-<summary>¿Qué es exactamente una pieza NAAB?</summary>
-<div class="faq-body">Es un dije toroidal hecho a mano: un cuerpo de resina con forma de torus (dona geométrica) con un cuarzo natural incrustado en su centro, envuelto en un trenzado veneciano continuo de cobre chapado en oro de 14k. Cada pieza es única porque el patrón del trenzado nunca se repite igual.</div>
-</details>
-
-<details>
-<summary>¿NAAB es joyería?</summary>
-<div class="faq-body">Preferimos llamarlo arte toroidal. La pieza nace de la geometría sagrada y la artesanía — no de una colección de moda ni de una línea de accesorios. Su valor está en lo que simboliza y en cómo se construye, no solo en cómo se ve.</div>
-</details>
-
-<details>
-<summary>¿Qué significa "NAAB"?</summary>
-<div class="faq-body">En lengua maya, NAAB significa "centro y origen". Elegimos ese nombre porque condensa lo que la pieza representa: un recordatorio de tu centro — el punto desde el cual todo fluye y al cual todo regresa.</div>
-</details>
-
-<details>
-<summary>¿Qué es el torus y por qué esa forma?</summary>
-<div class="faq-body">El torus es una forma geométrica con forma de dona que aparece en la naturaleza a muchas escalas: el campo magnético de la Tierra, la estructura de una manzana, la dinámica de un vórtice de agua. Representa el flujo continuo de energía que sale, gira y regresa a su origen. Es la forma que mejor traduce la idea de "centro" en un objeto que puedes llevar contigo.</div>
-</details>
-
-<details>
-<summary>¿Qué cuarzo trae la pieza?</summary>
-<div class="faq-body">Cada pieza lleva un cuarzo natural incrustado en su interior. La variedad puede cambiar entre piezas (cuarzo claro, ojo de tigre, amatista, rosa), lo que hace a cada dije único. En la capa digital, tu registro genera además una piedra de nacimiento simbólica basada en tu fecha — una lectura distinta al cuarzo físico.</div>
-</details>
-
-<details>
-<summary>¿Cómo funciona el código QR?</summary>
-<div class="faq-body">Cada pieza incluye un código QR único. Al escanearlo con tu teléfono, accedes a una página donde ingresas tu nombre y fecha de nacimiento. Con esos datos se genera tu perfil personal: tu signo solar, tu elemento, tu piedra de nacimiento, tu número de vida y tu color elemental. Toda la información se procesa en tu dispositivo — no almacenamos datos personales.</div>
-</details>
-
-<details>
-<summary>¿Cuánto tarda en hacerse una pieza?</summary>
-<div class="faq-body">El trenzado veneciano del cobre toma aproximadamente una hora de trabajo activo. La pieza completa, incluyendo el curado de la resina y el ensamblaje, requiere alrededor de dos horas por unidad. Todo es artesanal; no usamos moldes industriales ni producción en serie.</div>
-</details>
-
-<details>
-<summary>¿Cómo cuido mi pieza?</summary>
-<div class="faq-body">Límpiala con un paño seco y suave. Guárdala en la bolsa de lino que viene con ella cuando no la uses. Evita el contacto prolongado con perfumes, cremas, cloro y agua salada para conservar el brillo del cobre chapado en oro.</div>
-</details>
-
-<details>
-<summary>¿Hacen envíos?</summary>
-<div class="faq-body">Sí. La primera colección será limitada y los envíos se harán dentro de México. Los detalles de envío y costos se compartirán con la lista de espera antes del lanzamiento.</div>
-</details>
-
-</div>
-</div>
+<section class="beneficios" id="beneficios">
+    <div class="container">
+        <div class="beneficios-header reveal">
+            <p class="section-label">Lo que acompaña</p>
+            <h2 class="section-title light">No promete, recuerda</h2>
+            <p class="section-body light" style="margin:1rem auto 0; text-align:center;">NAAB no es un amuleto ni un dispositivo médico. Es un objeto con intención: una forma geométrica que te invita a volver al centro cada vez que la tocas o la ves.</p>
+        </div>
+        <div class="beneficios-grid">
+            <div class="beneficio-item reveal reveal-delay-1">
+                <div class="beneficio-icon">
+                    <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="20"/><path d="M26 12 L26 26 L34 32"/><path d="M18 20 Q26 14 34 20"/></svg>
+                </div>
+                <h4>Pausa consciente</h4>
+                <p>El gesto de tocar la pieza interrumpe el piloto automático. Un micro-ritual para volver al momento presente.</p>
+            </div>
+            <div class="beneficio-item reveal reveal-delay-2">
+                <div class="beneficio-icon">
+                    <svg viewBox="0 0 52 52"><polygon points="26,6 32,20 46,20 35,30 39,44 26,36 13,44 17,30 6,20 20,20"/></svg>
+                </div>
+                <h4>Enfoque e intención</h4>
+                <p>La intención que fijaste al activarla permanece como ancla. Cada vez que la sientes, te acuerdas de tu propósito.</p>
+            </div>
+            <div class="beneficio-item reveal reveal-delay-3">
+                <div class="beneficio-icon">
+                    <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="8"/><circle cx="26" cy="26" r="16" stroke-dasharray="3 4"/><path d="M26 2 L26 10"/><path d="M26 42 L26 50"/><path d="M2 26 L10 26"/><path d="M42 26 L50 26"/></svg>
+                </div>
+                <h4>Conexión simbólica</h4>
+                <p>El torus conecta lo micro con lo macro. Llevarlo es recordar que eres parte de algo más grande, no separado de ello.</p>
+            </div>
+            <div class="beneficio-item reveal reveal-delay-4">
+                <div class="beneficio-icon">
+                    <svg viewBox="0 0 52 52"><rect x="12" y="8" width="28" height="36" rx="3"/><circle cx="26" cy="20" r="6"/><path d="M18 32 Q26 38 34 32"/><path d="M20 38 Q26 42 32 38"/></svg>
+                </div>
+                <h4>Identidad personal</h4>
+                <p>Tu carta de nacimiento, tu elemento, tu número de vida — la capa digital convierte la pieza en un espejo simbólico de quien eres.</p>
+            </div>
+        </div>
+        <p class="beneficios-disclaimer">NAAB no hace alegatos de salud, curación o efectos terapéuticos. Es un objeto de intención y significado simbólico.</p>
+    </div>
 </section>
 
-<!-- ============ 9 · CTA ============ -->
-<section class="oscuro cta" id="lista">
-<div class="contenedor">
-<div class="revelar">
-<div class="divisor" style="color:var(--dorado)">
-<svg id="torus-divisor" viewBox="-70 -70 140 140" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"></svg>
-</div>
-<h2 class="seccion-titulo">Sé de los primeros en volver al centro</h2>
-<p class="intro">La primera colección de NAAB será limitada. Déjanos tu correo y te avisaremos antes que a nadie cuando las piezas estén listas.</p>
-<form class="formulario" id="forma-lista" action="https://formspree.io/f/mbdnyvqb" method="POST">
-<label for="correo" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Tu correo electrónico</label>
-<input type="email" id="correo" name="correo" placeholder="tu@correo.com" required autocomplete="email">
-<button type="submit">Quiero saber más</button>
-</form>
-<p class="confirmacion" id="confirmacion">Gracias. Te escribiremos cuando la primera pieza esté lista.</p>
-<p class="nota">Solo usaremos tu correo para avisarte del lanzamiento. <a href="#">Aviso de privacidad</a>.</p>
-</div>
-</div>
+<section class="faq" id="faq">
+    <div class="container">
+        <div class="faq-header reveal">
+            <p class="section-label">Preguntas frecuentes</p>
+            <h2 class="section-title">Todo lo que necesitas saber</h2>
+        </div>
+        <div class="faq-list">
+            <details class="reveal">
+                <summary>¿Qué es exactamente una pieza NAAB?</summary>
+                <div class="faq-answer">Es un dije toroidal hecho a mano: un cuerpo de resina con forma de torus (dona geométrica) con un cuarzo natural incrustado en su centro, envuelto en un trenzado veneciano continuo de cobre chapado en oro de 14k. Cada pieza es única porque el patrón del trenzado nunca se repite igual.</div>
+            </details>
+            <details class="reveal reveal-delay-1">
+                <summary>¿NAAB es joyería?</summary>
+                <div class="faq-answer">Preferimos llamarlo arte toroidal. La pieza nace de la geometría sagrada y la artesanía — no de una colección de moda ni de una línea de accesorios. Su valor está en lo que simboliza y en cómo se construye, no solo en cómo se ve.</div>
+            </details>
+            <details class="reveal reveal-delay-1">
+                <summary>¿Qué significa "NAAB"?</summary>
+                <div class="faq-answer">En lengua maya, NAAB significa "centro y origen". Elegimos ese nombre porque condensa lo que la pieza representa: un recordatorio de tu centro — el punto desde el cual todo fluye y al cual todo regresa.</div>
+            </details>
+            <details class="reveal reveal-delay-2">
+                <summary>¿Qué es el torus y por qué esa forma?</summary>
+                <div class="faq-answer">El torus es una forma geométrica con forma de dona que aparece en la naturaleza a muchas escalas: el campo magnético de la Tierra, la estructura de una manzana, la dinámica de un vórtice de agua. Representa el flujo continuo de energía que sale, gira y regresa a su origen. Es la forma que mejor traduce la idea de "centro" en un objeto que puedes llevar contigo.</div>
+            </details>
+            <details class="reveal reveal-delay-2">
+                <summary>¿Qué cuarzo trae la pieza?</summary>
+                <div class="faq-answer">Cada pieza lleva un cuarzo natural incrustado en su interior. La variedad puede cambiar entre piezas (cuarzo claro, ojo de tigre, amatista, rosa), lo que hace a cada dije único. En la capa digital, tu registro genera además una piedra de nacimiento simbólica basada en tu fecha — una lectura distinta al cuarzo físico.</div>
+            </details>
+            <details class="reveal reveal-delay-3">
+                <summary>¿Cómo funciona el código QR?</summary>
+                <div class="faq-answer">Cada pieza incluye un código QR único. Al escanearlo con tu teléfono, accedes a una página donde ingresas tu nombre y fecha de nacimiento. Con esos datos se genera tu perfil personal: tu signo solar, tu elemento, tu piedra de nacimiento, tu número de vida y tu color elemental. Toda la información se procesa en tu dispositivo — no almacenamos datos personales.</div>
+            </details>
+            <details class="reveal reveal-delay-3">
+                <summary>¿Cuánto tarda en hacerse una pieza?</summary>
+                <div class="faq-answer">El trenzado veneciano del cobre toma aproximadamente una hora de trabajo activo. La pieza completa, incluyendo el curado de la resina y el ensamblaje, requiere alrededor de dos horas por unidad. Todo es artesanal; no usamos moldes industriales ni producción en serie.</div>
+            </details>
+            <details class="reveal reveal-delay-4">
+                <summary>¿Cómo cuido mi pieza?</summary>
+                <div class="faq-answer">Límpiala con un paño seco y suave. Guárdala en la bolsa de lino que viene con ella cuando no la uses. Evita el contacto prolongado con perfumes, cremas, cloro y agua salada para conservar el brillo del cobre chapado en oro.</div>
+            </details>
+            <details class="reveal reveal-delay-4">
+                <summary>¿Hacen envíos?</summary>
+                <div class="faq-answer">Sí. La primera colección será limitada y los envíos se harán dentro de México. Los detalles de envío y costos se compartirán con la lista de espera antes del lanzamiento.</div>
+            </details>
+        </div>
+    </div>
 </section>
 
-<!-- ============ 8 · FOOTER ============ -->
+<section class="cta-final" id="cta">
+    <div class="cta-final-torus">
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#A8894E" stroke-width="0.5" opacity="0.5">
+                <ellipse cx="200" cy="200" rx="140" ry="60" transform="rotate(-15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="140" ry="60" transform="rotate(15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="140" ry="60" transform="rotate(45 200 200)"/>
+                <ellipse cx="200" cy="200" rx="140" ry="60" transform="rotate(75 200 200)"/>
+                <ellipse cx="200" cy="200" rx="100" ry="40" transform="rotate(-15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="100" ry="40" transform="rotate(15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="100" ry="40" transform="rotate(45 200 200)"/>
+                <ellipse cx="200" cy="200" rx="60" ry="25" transform="rotate(-15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="60" ry="25" transform="rotate(15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="180" ry="80" transform="rotate(-15 200 200)" stroke-dasharray="4 8"/>
+            </g>
+        </svg>
+    </div>
+    <div class="cta-final-content">
+        <h2 class="reveal">Sé de los primeros en volver al centro</h2>
+        <p class="reveal reveal-delay-1">La primera colección de NAAB será limitada. Déjanos tu correo y te avisaremos antes que a nadie cuando las piezas estén listas.</p>
+        <form class="waitlist-form reveal reveal-delay-2" id="waitlistForm" onsubmit="handleSubmit(event)">
+            <input type="email" placeholder="Tu correo electrónico" required id="emailInput">
+            <button type="submit">Quiero saber más</button>
+        </form>
+        <div class="waitlist-confirmation" id="confirmation">
+            <p>Gracias. Te escribiremos cuando la primera pieza esté lista.</p>
+            <span>Solo usaremos tu correo para avisarte del lanzamiento.</span>
+        </div>
+        <p class="privacy-note"><a href="#">Aviso de privacidad</a></p>
+    </div>
+</section>
+
 <footer>
-<div class="contenedor footer-fila">
-<span class="wordmark" style="font-size:17px">NAAB</span>
-<span>Centro · Origen · Conexión</span>
-<span><a href="#">Instagram</a> &nbsp;·&nbsp; <a href="#">Aviso de privacidad</a></span>
-</div>
+    <div class="footer-logo">NAAB</div>
+    <div class="footer-tagline">Centro · Origen · Conexión</div>
+    <div class="footer-social">
+        <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        </a>
+        <a href="#" aria-label="Correo">
+            <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 5l10 7 10-7"/></svg>
+        </a>
+    </div>
+    <div class="footer-links">
+        <a href="#">Aviso de privacidad</a>
+        <a href="#">Términos de uso</a>
+    </div>
+    <div class="footer-copy">© 2026 NAAB. Arte toroidal hecho a mano en México.</div>
 </footer>
 
 <script>
-/* Torus lineal: elipses rotadas alrededor del centro (firma visual de la marca) */
-function dibujarTorus(id, n, rx, ry){
-var svg = document.getElementById(id);
-if(!svg) return;
-var ns = 'http://www.w3.org/2000/svg';
-for(var i = 0; i < n; i++){
-var e = document.createElementNS(ns, 'ellipse');
-e.setAttribute('cx', 0); e.setAttribute('cy', 0);
-e.setAttribute('rx', rx); e.setAttribute('ry', ry);
-e.setAttribute('transform', 'rotate(' + (i * 180 / n) + ')');
-svg.appendChild(e);
-}
-var c = document.createElementNS(ns, 'circle');
-c.setAttribute('cx', 0); c.setAttribute('cy', 0); c.setAttribute('r', ry * 0.9);
-svg.appendChild(c);
-}
-dibujarTorus('torus-simbolo', 12, 58, 21);
-dibujarTorus('torus-divisor', 9, 56, 20);
-dibujarTorus('torus-ritual', 14, 58, 21);
-
-/* Aparición suave al hacer scroll, respetando reduced motion */
-if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
-var obs = new IntersectionObserver(function(entradas){
-entradas.forEach(function(en){
-if(en.isIntersecting){ en.target.classList.add('visible'); obs.unobserve(en.target); }
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) { navbar.classList.add('scrolled'); }
+    else { navbar.classList.remove('scrolled'); }
 });
-}, {threshold: 0.15});
-document.querySelectorAll('.revelar').forEach(function(el){ obs.observe(el); });
-} else {
-document.querySelectorAll('.revelar').forEach(function(el){ el.classList.add('visible'); });
-}
-
-/* Lista de espera: envío real a Formspree vía AJAX, sin salir de la página. */
-document.getElementById('forma-lista').addEventListener('submit', function(ev){
-ev.preventDefault();
-var forma = this;
-var datos = new FormData(forma);
-fetch(forma.action, {
-method: 'POST',
-body: datos,
-headers: {'Accept': 'application/json'}
-}).then(function(resp){
-if(resp.ok){
-forma.style.display = 'none';
-document.getElementById('confirmacion').style.display = 'block';
-} else {
-resp.json().then(function(data){
-console.error('Formspree error', data);
+function toggleNav() { document.getElementById('navLinks').classList.toggle('active'); }
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('active'); });
 });
-alert('No se pudo enviar tu correo. Por favor intenta de nuevo en unos minutos.');
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => { revealObserver.observe(el); });
+function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('waitlistForm');
+    const confirmation = document.getElementById('confirmation');
+    form.style.display = 'none';
+    confirmation.classList.add('show');
 }
-}).catch(function(err){
-console.error('Error de red al enviar a Formspree', err);
-alert('No se pudo enviar tu correo. Revisa tu conexión e intenta de nuevo.');
-});
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) { target.scrollIntoView({ behavior: 'smooth' }); }
+    });
 });
 </script>
-
 </body>
 </html>
